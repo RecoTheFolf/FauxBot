@@ -1,0 +1,20 @@
+{
+    "prefix": "!",
+    "white": "#ffffff",
+    "red": "#ff0000",
+    "orange": "#ffa500",
+    "yellow": "#ffff00",
+    "green": "#00ff00",
+    "blue": "#0000ff",
+    "purple": "#551a8b",
+    "limegreen": "#2dfc4c",
+    "ownerID": "119799610670579714",
+	"consoleLevel": "info",
+    "fileLevel": "info",
+    "elasticsearch": {
+        "use": false,
+        "client": {
+          "host": "localhost:9200"
+        }
+}
+}
