@@ -42,6 +42,8 @@ module.exports.run = async (bot, message, args) => {
   .addField('Voice Channels', voiceChannels, true)
   .addField('Roles', `${guild.roles.size}`, true)
   .addField('Emojis', `${guild.emojis.size}`, true)
+  .setFooter(guild.id)
+  .setTimestamp();
 
   return message.channel.send(embed);
 }
