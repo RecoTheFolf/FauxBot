@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
   .addField('Users:', humans, true)
   .addField('Verification Level', guild.verificationLevel, true)
   .addField('Text Channels', textChannels, true)
-  .addField('Text Channels', voiceChannels, true)
+  .addField('Voice Channels', voiceChannels, true)
   .addField('Roles', `${guild.roles.size}`, true)
   .addField('Emojis', `${guild.emojis.size}`, true)
 
