@@ -1,34 +1,26 @@
 const Action = require('./Action');
 const Collection = require('../../util/Collection');
-const { Events } = require('../../util/Constants');
+const Constants = require('../../util/Constants');
 
 class MessageDeleteBulkAction extends Action {
   handle(data) {
-    const client = this.client;
-    const channel = client.channels.get(data.channel_id);
+    const messages = new Collection();
 
-    if (channel) {
-      const ids = data.ids;
-      const messages = new Collection();
-      for (const id of ids) {
+    if (!data.messages) {
+      const channel = this.client.channels.get(data.channel_id);
+      for (const id of data.ids) {
         const message = channel.messages.get(id);
-        if (message) {
-          messages.set(message.id, message);
-          channel.messages.delete(id);
-        }
+        if (message) messages.set(message.id, message);
       }
-
-      if (messages.size > 0) client.emit(Events.MESSAGE_BULK_DELETE, messages);
-      return { messages };
+    } else {
+      for (const msg of data.messages) {
+        messages.set(msg.id, msg);
+      }
     }
-    return {};
+
+    if (messages.size > 0) this.client.emit(Constants.Events.MESSAGE_BULK_DELETE, messages);
+    return { messages };
   }
 }
-
-/**
- * Emitted whenever messages are deleted in bulk.
- * @event Client#messageDeleteBulk
- * @param {Collection<Snowflake, Message>} messages The deleted messages, mapped by their ID
- */
 
 module.exports = MessageDeleteBulkAction;

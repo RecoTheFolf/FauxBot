@@ -1,6 +1,4 @@
 const Collection = require('../util/Collection');
-const Util = require('../util/Util');
-const GuildMember = require('./GuildMember');
 
 /**
  * Keeps track of mentions in a {@link Message}.
@@ -23,7 +21,8 @@ class MessageMentions {
       } else {
         this.users = new Collection();
         for (const mention of users) {
-          let user = message.client.users.add(mention);
+          let user = message.client.users.get(mention.id);
+          if (!user) user = message.client.dataManager.newUser(mention);
           this.users.set(user.id, user);
         }
       }
@@ -116,37 +115,6 @@ class MessageMentions {
     }
     return this._channels;
   }
-
-  /**
-   * Checks if a user, guild member, role, or channel is mentioned.
-   * Takes into account user mentions, role mentions, and @everyone/@here mentions.
-   * @param {UserResolvable|GuildMember|Role|GuildChannel} data User/GuildMember/Role/Channel to check
-   * @param {Object} [options] Options
-   * @param {boolean} [options.ignoreDirect=false] - Whether to ignore direct mentions to the item
-   * @param {boolean} [options.ignoreRoles=false] - Whether to ignore role mentions to a guild member
-   * @param {boolean} [options.ignoreEveryone=false] - Whether to ignore everyone/here mentions
-   * @returns {boolean}
-   */
-  has(data, { ignoreDirect = false, ignoreRoles = false, ignoreEveryone = false } = {}) {
-    if (!ignoreEveryone && this.everyone) return true;
-    if (!ignoreRoles && data instanceof GuildMember) {
-      for (const role of this.roles.values()) if (data.roles.has(role.id)) return true;
-    }
-
-    if (!ignoreDirect) {
-      const id = data.id || data;
-      return this.users.has(id) || this.channels.has(id) || this.roles.has(id);
-    }
-
-    return false;
-  }
-
-  toJSON() {
-    return Util.flatten(this, {
-      members: true,
-      channels: true,
-    });
-  }
 }
 
 /**
@@ -159,18 +127,18 @@ MessageMentions.EVERYONE_PATTERN = /@(everyone|here)/g;
  * Regular expression that globally matches user mentions like `<@81440962496172032>`
  * @type {RegExp}
  */
-MessageMentions.USERS_PATTERN = /<@!?(1|\d{17,19})>/g;
+MessageMentions.USERS_PATTERN = /<@!?[0-9]+>/g;
 
 /**
  * Regular expression that globally matches role mentions like `<@&297577916114403338>`
  * @type {RegExp}
  */
-MessageMentions.ROLES_PATTERN = /<@&(\d{17,19})>/g;
+MessageMentions.ROLES_PATTERN = /<@&[0-9]+>/g;
 
 /**
  * Regular expression that globally matches channel mentions like `<#222079895583457280>`
  * @type {RegExp}
  */
-MessageMentions.CHANNELS_PATTERN = /<#(\d{17,19})>/g;
+MessageMentions.CHANNELS_PATTERN = /<#([0-9]+)>/g;
 
 module.exports = MessageMentions;

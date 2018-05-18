@@ -1,7 +1,5 @@
 const GuildChannel = require('./GuildChannel');
 const Collection = require('../util/Collection');
-const { browser } = require('../util/Constants');
-const { Error } = require('../errors');
 
 /**
  * Represents a guild voice channel on Discord.
@@ -14,18 +12,20 @@ class VoiceChannel extends GuildChannel {
     /**
      * The members in this voice channel
      * @type {Collection<Snowflake, GuildMember>}
-     * @name VoiceChannel#members
      */
-    Object.defineProperty(this, 'members', { value: new Collection() });
+    this.members = new Collection();
+
+    this.type = 'voice';
   }
 
-  _patch(data) {
-    super._patch(data);
+  setup(data) {
+    super.setup(data);
+
     /**
      * The bitrate of this voice channel
      * @type {number}
      */
-    this.bitrate = data.bitrate;
+    this.bitrate = data.bitrate * 0.001;
 
     /**
      * The maximum amount of users allowed in this channel - 0 means unlimited.
@@ -60,7 +60,7 @@ class VoiceChannel extends GuildChannel {
    * @readonly
    */
   get joinable() {
-    if (browser) return false;
+    if (this.client.browser) return false;
     if (!this.permissionsFor(this.client.user).has('CONNECT')) return false;
     if (this.full && !this.permissionsFor(this.client.user).has('MOVE_MEMBERS')) return false;
     return true;
@@ -76,17 +76,18 @@ class VoiceChannel extends GuildChannel {
   }
 
   /**
-   * Sets the bitrate of the channel.
+   * Sets the bitrate of the channel (in kbps).
    * @param {number} bitrate The new bitrate
    * @param {string} [reason] Reason for changing the channel's bitrate
    * @returns {Promise<VoiceChannel>}
    * @example
    * // Set the bitrate of a voice channel
-   * voiceChannel.setBitrate(48000)
-   *   .then(vc => console.log(`Set bitrate to ${vc.bitrate}bps for ${vc.name}`))
+   * voiceChannel.setBitrate(48)
+   *   .then(vc => console.log(`Set bitrate to ${vc.bitrate}kbps for ${vc.name}`))
    *   .catch(console.error);
    */
   setBitrate(bitrate, reason) {
+    bitrate *= 1000;
     return this.edit({ bitrate }, reason);
   }
 
@@ -115,7 +116,7 @@ class VoiceChannel extends GuildChannel {
    *   .catch(console.error);
    */
   join() {
-    if (browser) return Promise.reject(new Error('VOICE_NO_BROWSER'));
+    if (this.client.browser) return Promise.reject(new Error('Voice connections are not available in browsers.'));
     return this.client.voice.joinChannel(this);
   }
 
@@ -126,7 +127,7 @@ class VoiceChannel extends GuildChannel {
    * voiceChannel.leave();
    */
   leave() {
-    if (browser) return;
+    if (this.client.browser) return;
     const connection = this.client.voice.connections.get(this.guild.id);
     if (connection && connection.channel.id === this.id) connection.disconnect();
   }

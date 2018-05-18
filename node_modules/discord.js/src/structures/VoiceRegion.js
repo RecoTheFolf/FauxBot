@@ -1,5 +1,3 @@
-const Util = require('../util/Util');
-
 /**
  * Represents a Discord voice region for guilds.
  */
@@ -46,10 +44,6 @@ class VoiceRegion {
      * @type {string}
      */
     this.sampleHostname = data.sample_hostname;
-  }
-
-  toJSON() {
-    return Util.flatten(this);
   }
 }
 
