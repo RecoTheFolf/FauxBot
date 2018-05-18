@@ -18,7 +18,8 @@ module.exports.run = async (bot, message, args) => {
        let evaled = eval(code);
        let rawEvaled = evaled;
        if (typeof evaled !== "string")
-         evaled = require("util").inspect(evaled);
+         evaled = require("util").inspect(evaled,{depth:0});
+         
  
    let embed = new Discord.RichEmbed()
        .setTitle(`Evaluated in ${Math.round(bot.ping)}ms`)
