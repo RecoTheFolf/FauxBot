@@ -9,7 +9,7 @@ try {
     process.exit()
   }
 
-
+const perms = require('./perms.js');
 const botconfig = require("./settings.json");
 const bottoken = require("./token.json");
 const Discord = require("discord.js");
