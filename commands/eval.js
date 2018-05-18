@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
    .setTitle("Evaluation")
    .setDescription("Sorry, the `eval` command can only be executed by the Bot Owner.")
    .setColor("#cdf785");
-   if(message.author.id !== config.ownerID) return message.channel.send(embed);
+   if(!config.developers.includes(message.author.id)) return message.channel.send(embed);
    
    function clean(text) {
    if (typeof(text) === "string")
