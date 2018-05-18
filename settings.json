@@ -8,7 +8,7 @@
     "blue": "#0000ff",
     "purple": "#551a8b",
     "limegreen": "#2dfc4c",
-    "developers":[119799610670579714,245419467843174401],
+    "developers":["119799610670579714","245419467843174401"],
     "ownerID": "119799610670579714",
 	"consoleLevel": "info",
     "fileLevel": "info",
