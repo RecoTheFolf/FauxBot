@@ -11,12 +11,7 @@ const settings = {
     "developers":["119799610670579714","245419467843174401"],
     "ownerID": "119799610670579714",
 	"consoleLevel": "info",
-    "fileLevel": "info",
-    "elasticsearch": {
-        "use": false,
-        "client": {
-          "host": "localhost:9200"
-        }
+    "fileLevel": "info"
 },
 perms:{
     0: {
