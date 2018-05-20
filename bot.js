@@ -1,72 +1,63 @@
+//Setup
 process.title = 'Fox Den Development'
-
 var Config
-
 try {
-    Config = require('./settings.json')
+    Config = require('./settings.js')
   } catch (e) {
     console.log('\nFox Den Development encountered an error while trying to load the config file, please resolve this issue and restart the bot\n\n' + e.message)
     process.exit()
   }
 
-const perms = require('./perms.js');
-const botconfig = require("./settings.json");
+
+//load constants
+const { promisify } = require("util");
+const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.json");
 const Discord = require("discord.js");
+
+class FDBot extends Discord.Client {
+    constructor(options) {
+super({fetchAllMembers:true,disableEveryone:true}); //Cache users so that there's no errors when members are mentioned + Disable @everyone
+        this.commands = new Discord.Collection();
+        this.streamData = new Discord.Collection();
+        this.botconfig = require("./settings.js");
+        this.prefixes= require('./prefixes.js')
+        this.events = new Discord.Collection();
+    }//Close constructor
+}//Close class
+
+const bot = new FDBot(); //Boot
+
 const fs = require("fs");
-const bot = new Discord.Client({disableEveryone: true});
-bot.commands = new Discord.Collection();
+require("./functions.js")(bot);//Load useful functions into client/bot for easy grabbing
 
+const init = async () => {
+    await fs.readdir("./commands/", (err, files) => {
+            if(err) console.info(err);
+            let jsfiles = files.filter(f => f.split(".").pop() === "js");
+            if(jsfiles.length <= 0) {
+                console.info("Couldn't find commands.");
+                return;
+            }
+        
+            console.info(`Loading ${jsfiles.length} commands!`);
+        
+            jsfiles.forEach((f, i) => {
+                const props = new (require(`./commands/${f}`))(bot);
+                console.info(`${i + 1}: ${f} loaded!`);
+                bot.commands.set(props.help.name, props);
+            });
+        });
 
-fs.readdir("./commands/", (err, files) => {
+    const eventFiles = await readdir('./events')
+    console.log("Loading Events...")
+    eventFiles.forEach(f => {
+        const eventName = f.split('.')[0]
+        console.log(`Loaded the ${eventName} event`)
+        const event = new (require(`./events/${f}`))(bot);
+        bot.on(eventName, (...args) => event.run(...args))
+    })
+    bot.login(bottoken.token)
+}
 
-    if(err) console.info(err);
-
-    let jsfiles = files.filter(f => f.split(".").pop() === "js");
-    if(jsfiles.length <= 0) {
-        console.info("Couldn't find commands.");
-        return;
-    }
-
-    console.info(`Loading ${jsfiles.length} commands!`);
-
-    jsfiles.forEach((f, i) => {
-        let props = require(`./commands/${f}`);
-        console.info(`${i + 1}: ${f} loaded!`);
-        bot.commands.set(props.help.name, props);
-    });
-
-});
-
-bot.on("ready", async () => {
-    console.info(`${bot.user.username} is online and in ${bot.guilds.size} servers!`);
-    bot.user.setActivity("on Development Branch v0.1!");
-});
-
-bot.on("message", async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm") return;
-
-    let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
-
-    if(!prefixes[message.guild.id]){
-        prefixes[message.guild.id] = {
-            prefixes: botconfig.prefix
-        };
-    }
-
-    let prefix = prefixes[message.guild.id].prefixes;
-    if (!message.content.startsWith(prefix)) return;
-
-
-    //let prefix = botconfig.prefix;
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-    let commandfile = bot.commands.get(cmd.slice(prefix.length));
-    if(commandfile) commandfile.run(bot,message,args);
-
-
-});
-
-bot.login(bottoken.token)
+init();

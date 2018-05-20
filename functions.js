@@ -1,5 +1,5 @@
-const functions = {
-    clean = async (client, text) => {
+module.exports = (client) => {
+    client.clean = async (client, text) => {
         if (text && text.constructor.name == "Promise")
           text = await text;
         if (typeof evaled !== "string")
@@ -14,5 +14,3 @@ const functions = {
     }
 
 }
-
-module.exports = functions;

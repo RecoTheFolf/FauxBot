@@ -1,5 +1,5 @@
 {
-    "prefix": "!",
+   "prefix": "--",
     "white": "#ffffff",
     "red": "#ff0000",
     "orange": "#ffa500",
@@ -17,5 +17,6 @@
         "client": {
           "host": "localhost:9200"
         }
+    }
 }
-}
+

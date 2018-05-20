@@ -1,5 +1,0 @@
-perms = {
-
-}
-
-module.exports = perms;
