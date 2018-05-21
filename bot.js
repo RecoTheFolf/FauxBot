@@ -8,7 +8,6 @@ try {
     process.exit()
   }
 
-
 //load constants
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)

@@ -13,7 +13,6 @@ class Userinfo extends Command {
             description: "Get information on a user",
         })
     }
-  
 
     async run(message,args) {
 
