@@ -11,7 +11,7 @@ class Eval extends Command {
   }
 
   async run(message,args) {
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
     .setTitle("Evaluation")
     .setDescription("Sorry, the `eval` command can only be executed by the Bot Owner.")
     .setColor("#cdf785");
@@ -29,7 +29,7 @@ class Eval extends Command {
         if (typeof evaled !== "string")
           evaled = require("util").inspect(evaled,{depth:0});
           
-    let embed = new Discord.RichEmbed()
+    let embed = new Discord.MessageEmbed()
         .setTitle(`Evaluated in ${Math.round(this.bot.ping)}ms`)
         .addField(":inbox_tray: Input", `\`\`\`js\n${code}\n\`\`\``)
         .addField(":outbox_tray: Output", `\`\`\`js\n${clean(evaled).replace(this.bot.token, "No, bad! :newspaper2:")}\n\`\`\``)

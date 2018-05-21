@@ -23,7 +23,7 @@ class Userinfo extends Command {
     //let roles = member.roles.mention;
     if (roles.length < 1) roles = ['None'];
     let user = Discord.user;
-    let userembed = new Discord.RichEmbed()
+    let userembed = new Discord.MessageEmbed()
     .setDescription("**User Information**")
     .setColor(config.limegreen)
     .setThumbnail(member.user.displayAvatarURL)

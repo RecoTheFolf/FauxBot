@@ -35,7 +35,7 @@ class Serverinfo extends Command {
   });
   roles = roles.join(", ");
 
-  let embed = new Discord.RichEmbed()
+  let embed = new Discord.MessageEmbed()
   .setTitle(`Server Stats`)
   .setColor(botconfig.limegreen)
   .setThumbnail(icon)
