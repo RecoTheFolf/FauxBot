@@ -13,7 +13,7 @@ class Serverinfo extends Command {
     async run(message,args) {
 
   let guild = message.guild;
-  let icon = message.guild.iconURL;
+  let icon = message.guild.iconURL();
 
   let createdAtRaw = guild.createdAt.toDateString();
   let createdAt = createdAtRaw.split(" ");

@@ -26,7 +26,7 @@ class Userinfo extends Command {
     let userembed = new Discord.MessageEmbed()
     .setDescription("**User Information**")
     .setColor(config.limegreen)
-    .setThumbnail(member.user.displayAvatarURL)
+    .setThumbnail(member.user.avatarURL())
     .addField("**Username**", member.user.username, true)
     .addField("**Nickname**", member.nickname ? member.nickname : "None", true)
     .addField("**Discriminator**", member.user.discriminator, true)
