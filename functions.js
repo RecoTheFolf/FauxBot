@@ -1,5 +1,7 @@
-module.exports = (client) => {
-    client.clean = async (client, text) => {
+const randomstring = require("randomstring");
+
+module.exports = (bot) => {
+    bot.clean = async (bot, text) => {
         if (text && text.constructor.name == "Promise")
           text = await text;
         if (typeof evaled !== "string")
@@ -8,7 +10,7 @@ module.exports = (client) => {
         text = text
           .replace(/`/g, "`" + String.fromCharCode(8203))
           .replace(/@/g, "@" + String.fromCharCode(8203))
-          .replace(client.token, randomstring.generate(24)+"."+randomstring.generate(6)+"."+randomstring.generate(23));
+          .replace(bot.token, randomstring.generate(24)+"."+randomstring.generate(6)+"."+randomstring.generate(23));
     
         return text;
     }

@@ -11,6 +11,11 @@ class Eval extends Command {
   }
 
   async run(message,args) {
+    const guild = message.guild ? message.guild : null
+    const msg = message
+    const settings = message.settings
+    const client = this.client
+
     let embed = new Discord.MessageEmbed()
     .setTitle("Evaluation")
     .setDescription("Sorry, the `eval` command can only be executed by the Bot Owner.")
@@ -32,7 +37,7 @@ class Eval extends Command {
     let embed = new Discord.MessageEmbed()
         .setTitle(`Evaluated in ${Math.round(this.bot.ping)}ms`)
         .addField(":inbox_tray: Input", `\`\`\`js\n${code}\n\`\`\``)
-        .addField(":outbox_tray: Output", `\`\`\`js\n${clean(evaled).replace(this.bot.token, "No, bad! :newspaper2:")}\n\`\`\``)
+        .addField(":outbox_tray: Output", `\`\`\`js\n${clean(evaled).replace(this.bot.token, "No, bad!")}\n\`\`\``)
         .addField('Type', `\`\`\`xl\n${(typeof rawEvaled).substr(0, 1).toUpperCase() + (typeof rawEvaled).substr(1)}\n\`\`\``)
         .setColor('GREEN');
         message.channel.send({embed});
