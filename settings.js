@@ -11,8 +11,7 @@ const settings = {
     "developers":["119799610670579714","245419467843174401"],
     "ownerID": "119799610670579714",
 	"consoleLevel": "info",
-    "fileLevel": "info"
-},
+    "fileLevel": "info",
 perms:{
     0: {
         name:"User",
