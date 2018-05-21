@@ -37,7 +37,6 @@ class Userinfo extends Command {
     .addField("**Roles**", `${member.roles.filter(r => r.name != `@everyone`).map(r => `${r}`).join(' ')}`, false)
     .addField("**Joined At**", `${moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
     .addField("**Account Created At**", `${moment.utc(member.user.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
-    .addField("**Permissions**", `${member.permissions.toArray}`, true)
     .setFooter(member.id)
     .setTimestamp();
 
