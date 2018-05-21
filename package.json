@@ -1,7 +1,7 @@
 {
-  "name": "fox den development",
+  "name": "FauxBot",
   "version": "0.0.1",
-  "description": "Fox Den Development meant for Discord",
+  "description": "FauxBot in development",
   "main": "bot.js",
   "dependencies": {
     "chalk": "^2.4.1",
