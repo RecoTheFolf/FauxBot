@@ -1,10 +1,10 @@
 //Setup
-process.title = 'Fox Den Development'
+process.title = 'FauxBot'
 var Config
 try {
     Config = require('./settings.js')
   } catch (e) {
-    console.log('\nFox Den Development encountered an error while trying to load the config file, please resolve this issue and restart the bot\n\n' + e.message)
+    console.log('\nFauxBot encountered an error while trying to load the config file, please resolve this issue and restart the bot\n\n' + e.message)
     process.exit()
   }
 
