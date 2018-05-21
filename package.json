@@ -13,6 +13,7 @@
     "moment-duration-format": "^2.2.2",
     "nodemon": "^1.17.2",
     "pm2": "^2.10.4",
+    "rethinkdbdash": "^2.3.31",
     "simple-git": "^1.92.0",
     "string-similarity": "^1.2.0",
     "superagent": "^3.8.2",

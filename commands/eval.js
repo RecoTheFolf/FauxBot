@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const config = require("../settings.json");
+const config = require("../settings.js");
 const Command = require('../base/Cmds.js')
 
 class Eval extends Command {
