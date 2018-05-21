@@ -12,7 +12,7 @@ try {
 //load constants
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
-//const bottoken = require("./token.json");
+const bottoken = require("./token.json");
 const Discord = require("discord.js");
 
 class FDBot extends Discord.Client {
@@ -57,7 +57,7 @@ const init = async () => {
         const event = new (require(`./events/${f}`))(bot);
         bot.on(eventName, (...args) => event.run(...args))
     })
-    bot.login(`NDQ3MjQ1MjkwMDMwODkxMDE4.DePZWA.fbakzRt67q7RWQci4KdDxkfW4CE`)
+    bot.login(bottoken.token)
 }
 
 init();

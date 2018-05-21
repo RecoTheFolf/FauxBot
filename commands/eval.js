@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 const config = require("../settings.js");
-const Command = require('../base/Cmds.js')
+const Command = require('../base/Cmds.js');
 
 class Eval extends Command {
-  constructor(bot,) {
+  constructor(bot) {
       super(bot,{ 
           name:'eval',
           description: "Latency of the bot",
@@ -29,7 +29,6 @@ class Eval extends Command {
         if (typeof evaled !== "string")
           evaled = require("util").inspect(evaled,{depth:0});
           
-  
     let embed = new Discord.RichEmbed()
         .setTitle(`Evaluated in ${Math.round(this.bot.ping)}ms`)
         .addField(":inbox_tray: Input", `\`\`\`js\n${code}\n\`\`\``)
