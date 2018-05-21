@@ -14,6 +14,7 @@
     "ms": "^2.1.1",
     "nodemon": "^1.17.2",
     "pm2": "^2.10.4",
+    "randomstring": "^1.1.5",
     "rethinkdbdash": "^2.3.31",
     "simple-git": "^1.92.0",
     "string-similarity": "^1.2.0",
