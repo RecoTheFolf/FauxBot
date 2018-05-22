@@ -13,6 +13,7 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.json");
 const Discord = require("discord.js");
+const r = require('rethinkdbdash')({db:`FauxBot`})();
 
 class FDBot extends Discord.Client {
     constructor(options) {
@@ -22,6 +23,8 @@ super({fetchAllMembers:true,disableEveryone:true}); //Cache users so that there'
         this.botconfig = require("./settings.js");
         this.prefixes= require('./prefixes.js')
         this.events = new Discord.Collection();
+        this.settings = r.table('settings')
+        this.config = require('./settings.js')
     }//Close constructor
 }//Close class
 

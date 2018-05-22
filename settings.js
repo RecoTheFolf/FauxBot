@@ -12,6 +12,14 @@ const settings = {
     "ownerID": "119799610670579714",
 	"consoleLevel": "info",
     "fileLevel": "info",
+    defaultSettings: {
+     
+         name:'prefix',
+         value:'=',
+         description:'Set the prefix for the bot',
+         set: async function(value,guild) {}, //This function sets the value
+         view: async function(guild) {} //For viewing the setting
+    },
 perms:{
     0: {
         name:"User",
