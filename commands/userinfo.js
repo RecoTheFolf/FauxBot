@@ -15,11 +15,16 @@ class Userinfo extends Command {
     }
 
     async run(message,args) {
+const keyPerms = ['BAN_MEMBERS','KICK_MEMBERS','MANAGE_ROLES','MANAGE_MESSAGES','ADMINISTRATOR','MANAGE_NICKNAMES','MANAGE_CHANNELS','MANAGE_EMOJIS']
+let perms = []
+
 
     const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
+
+await keyPerms.forEach(p => {if (member.permissions.has(p)) {perms.push(p)}})
+    
     let UReason = args.slice(1).join(" ");
     let roles = member.roles.array().slice(1).sort((a, b) => a.comparePositionTo(b)).reverse().map(role => role.name);
-    let perms = message.member.permissions;
     //let roles = member.roles.mention;
     if (roles.length < 1) roles = ['None'];
     let user = Discord.user;
@@ -40,6 +45,8 @@ class Userinfo extends Command {
     .addField("**Account Created At**", `${moment.utc(member.user.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
     .setFooter(member.id)
     .setTimestamp();
+    
+if (perms.length > 0) userembed.addField('Key Permissions',perms.join(', ').toLowerCase().replaceAll('_',' '),true);
 
     return message.channel.send(userembed);
 }
