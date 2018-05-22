@@ -15,7 +15,7 @@ const bottoken = require("./token.json");
 const Discord = require("discord.js");
 const r = require('rethinkdbdash')({db:`FauxBot`})();
 
-class FDBot extends Discord.Client {
+class Faux extends Discord.Client {
     constructor(options) {
 super({fetchAllMembers:true,disableEveryone:true}); //Cache users so that there's no errors when members are mentioned + Disable @everyone
         this.commands = new Discord.Collection();
@@ -25,13 +25,20 @@ super({fetchAllMembers:true,disableEveryone:true}); //Cache users so that there'
         this.events = new Discord.Collection();
         this.settings = r.table('settings')
         this.config = require('./settings.js')
+        this.token = require('./token.json')
     }//Close constructor
 }//Close class
 
-const bot = new FDBot(); //Boot
+const bot = new Faux(); //Boot
 
 const fs = require("fs");
 require("./functions.js")(bot);//Load useful functions into client/bot for easy grabbing
+
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.replace(new RegExp(search, 'g'), replacement);
+  };
+
 
 const init = async () => {
     await fs.readdir("./commands/", (err, files) => {
