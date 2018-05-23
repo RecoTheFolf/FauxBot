@@ -47,7 +47,7 @@ await keyPerms.forEach(p => {if (member.permissions.has(p)) {perms.push(p)}})
     .setFooter(member.id)
     .setTimestamp();
 
-if (perms.length > 0) userembed.addField('Key Permissions',perms.join(', ').toLocaleUpperCase().replaceAll('_',' '),true);
+if (perms.length > 0) userembed.addField('Key Permissions',perms.join(', ').toLocaleLowerCase().replaceAll('_',' '),true);
 
     return message.channel.send(userembed);
 }
