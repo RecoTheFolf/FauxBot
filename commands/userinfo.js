@@ -40,12 +40,12 @@ await keyPerms.forEach(p => {if (member.permissions.has(p)) {perms.push(p)}})
     .addField("**ID**", member.id, true)
     .addField("**Status**",`${member.user.presence.status}`,true)
     .addField("**Playing**", `${member.presence.game ? `${member.presence.game.name}` : "Not playing anything."}`,true)
-    .addField("**Roles**", `${member.roles.filter(r => r.name != `@everyone`).map(r => `${r}`).join(' ')}`, false)
+    .addField("**Roles**", `${member.roles.size == 1 ? "None" : member.roles.filter(r => r.name != `@everyone`).map(r => `${r}`).join(' ')}`, false)
     .addField("**Joined At**", `${moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
     .addField("**Account Created At**", `${moment.utc(member.user.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`, true)
     .setFooter(member.id)
     .setTimestamp();
-    
+
 if (perms.length > 0) userembed.addField('Key Permissions',perms.join(', ').toLowerCase().replaceAll('_',' '),true);
 
     return message.channel.send(userembed);
