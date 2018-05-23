@@ -7,6 +7,7 @@ class Serverinfo extends Command {
         super(bot,{ 
             name:'serverinfo',
             description: "Get information on the server",
+            guildOnly:true
         })
     }
   

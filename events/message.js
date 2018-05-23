@@ -6,9 +6,8 @@ module.exports = class {
 async run(message) {
 
     if(message.author.bot) return;
-    if(message.channel.type === "dm") return;
 
-   const settings = message.guild ? await this.bot.settings.get(message.guild.id).getField('settings').run() :  this.bot.defaultSettings
+   const settings = message.guild ? await this.bot.settings.get(message.guild.id).getField('settings').run() :  this.bot.config.defaultSettings
 
 console.log(settings)
 
@@ -21,7 +20,10 @@ console.log(1)
     let args = messageArray.slice(1);
     let commandfile = this.bot.commands.get(cmd.slice(settings.prefix.value.length));
     console.log(commandfile)
-    if(commandfile) commandfile.run(message,args);
+    if(!commandfile) return;
+    if (commandfile.conf.guildOnly && message.channel.type === 'dm') return message.channel.send("This command cannot be used in DM's")
+    
+    commandfile.run(message,args);
 }
 
 }

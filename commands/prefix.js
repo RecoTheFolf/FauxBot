@@ -7,6 +7,7 @@ class Prefix extends Command {
       super(bot,{ 
           name:'prefix',
           description: "Set the prefix for the bot",
+          guildOnly:true
       })
   }
 
