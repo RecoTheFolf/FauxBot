@@ -23,6 +23,7 @@ async run (message, args) {
 
   try{
     delete require.cache[require.resolve(`./${args[0]}.js`)];
+    this.bot.commands.set(args[0],new (require(`./${args[0]}.js`))(this.bot))
   let Aembed = new Discord.MessageEmbed()
   .setTitle("Reloading..")
   .setDescription(`${args[0]}.js successfully reloaded!`)
