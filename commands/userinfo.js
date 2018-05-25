@@ -15,7 +15,7 @@ class Userinfo extends Command {
         })
     }
 
-    async run(message,args) {
+async run(message,args) {
 const keyPerms = ['BAN_MEMBERS','KICK_MEMBERS','MANAGE_ROLES','MANAGE_MESSAGES','ADMINISTRATOR','MANAGE_NICKNAMES','MANAGE_CHANNELS','MANAGE_EMOJIS']
 let perms = []
 
@@ -47,7 +47,7 @@ await keyPerms.forEach(p => {if (member.permissions.has(p)) {perms.push(p)}})
     .setFooter(member.id)
     .setTimestamp();
 
-if (perms.length > 0) userembed.addField('Key Permissions',perms.join(', ').toLocaleUpperCase().replaceAll('_',' '),true);
+if (perms.length > 0) userembed.addField('User Permissions',perms.join(', ').toLocaleUpperCase().replaceAll('_',' '),true);
 
     return message.channel.send(userembed);
 }

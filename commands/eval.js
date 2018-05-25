@@ -18,7 +18,7 @@ class Eval extends Command {
 
     let embed = new Discord.MessageEmbed()
     .setTitle("Evaluation")
-    .setDescription("Sorry, the `eval` command can only be executed by the Bot Owner.")
+    .setDescription("Sorry, the `eval` command can only be executed by the Bot Developers.")
     .setColor("#cdf785");
     if(!config.developers.includes(message.author.id)) return message.channel.send(embed);
     
