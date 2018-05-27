@@ -44,10 +44,7 @@ const init = async () => {
     await fs.readdir("./commands/", (err, files) => {
             if(err) console.info(err);
             let jsfiles = files.filter(f => f.split(".").pop() === "js");
-            if(jsfiles.length <= 0) {
-                console.info("Couldn't find commands.");
-                return;
-            }
+            if(jsfiles.length <= 0) return console.info("Couldn't find commands.");
         
             console.info(`Loading ${jsfiles.length} commands!`);
         
