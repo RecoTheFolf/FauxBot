@@ -37,8 +37,8 @@ class Serverinfo extends Command {
   roles = roles.join(", ");
 
   let embed = new Discord.MessageEmbed()
-  .setTitle(`Server Stats`)
-  .setColor(botconfig.limegreen)
+  .setTitle(`Server Information`)
+  .setColor("RANDOM")
   .setThumbnail(icon)
   .addField('Guild Name', guild.name, true)
   .addField('Guild ID', guild.id, true)
