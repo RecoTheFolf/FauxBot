@@ -22,7 +22,7 @@ async run (message, args) {
   if(!this.bot.config.developers.includes(message.author.id)) return message.channel.send(embed);
 
   try{
-    delete require.cache[require.resolve(`./${args[0]}.js`)];
+    //delete require.cache[require.resolve(`./${args[0]}.js`)];
     this.bot.commands.set(args[0],new (require(`./${args[0]}.js`))(this.bot))
   let Aembed = new Discord.MessageEmbed()
   .setTitle("Reloading..")
