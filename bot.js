@@ -40,20 +40,20 @@ String.prototype.replaceAll = function(search, replacement) {
   };
 
 
-const init = async () => {
-    await fs.readdir("./commands/", (err, files) => {
-            if(err) console.info(err);
-            let jsfiles = files.filter(f => f.split(".").pop() === "js");
-            if(jsfiles.length <= 0) return console.info("Couldn't find commands.");
-        
-            console.info(`Loading ${jsfiles.length} commands!`);
-        
-            jsfiles.forEach((f, i) => {
-                const props = new (require(`./commands/${f}`))(bot);
-                console.info(`${i + 1}: ${f} loaded!`);
-                bot.commands.set(props.help.name, props);
-            });
-        });
+  const initialize = async () => {
+    //Run all initialization actions
+    //-------------------------------
+    //Load Categories
+    const categoryFolders = await readdir('./commands')
+    categoryFolders.forEach(async c => {
+        const thisCommands = await readdir(`./commands/${c}/`)
+        console.log(`Now loading ${thisCommands.length} commands in the ${c} category`)
+        thisCommands.forEach(async co => {
+            const cmd = new (require(`./commands/${c}/${co}`))(bot)
+            cmd.conf.category = c
+            bot.commands.set(co.split('.')[0],cmd)
+        })
+    })
 
     const eventFiles = await readdir('./events')
     console.log("Loading Events...")
@@ -66,4 +66,4 @@ const init = async () => {
     bot.login(bottoken.token)
 }
 
-init();
+initialize();

@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const botconfig = require('../settings.js');
-const Command = require('../base/Cmds.js');
+const config = require("../../settings.js");
+const Command = require('../../base/Cmds.js');
 const moment = require("moment");
 require("moment-duration-format");
 

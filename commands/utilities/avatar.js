@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const sm = require("string-similarity");
-const config = require("../settings.js");
-const Command = require('../base/Cmds.js')
+const config = require("../../settings.js");
+const Command = require('../../base/Cmds.js')
 
 class Avatar extends Command {
   constructor(bot) {

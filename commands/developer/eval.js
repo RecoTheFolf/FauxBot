@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
-const config = require("../settings.js");
-const Command = require('../base/Cmds.js');
+const config = require("../../settings.js");
+const Command = require('../../base/Cmds.js');
 
 class Eval extends Command {
   constructor(bot) {

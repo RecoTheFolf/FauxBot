@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-const config = require("../settings.js");
-const Command = require('../base/Cmds.js');
+const config = require("../../settings.js");
+const Command = require('../../base/Cmds.js');
 
 
 class Reload extends Command {

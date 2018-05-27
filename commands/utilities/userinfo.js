@@ -1,10 +1,10 @@
 const Discord = require("discord.js");
 const moment = require("moment");
-const config = require("../settings.js")
+const config = require("../../settings.js")
+const Command = require('../../base/Cmds.js')
 require("moment-duration-format");
 const ms = require('ms');
 
-const Command = require('../base/Cmds.js');
 
 class Userinfo extends Command {
     constructor(bot) {

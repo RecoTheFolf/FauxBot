@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("fs");
-const Command = require('../base/Cmds.js');
+const Command = require('../../base/Cmds.js');
 
 class Prefix extends Command {
   constructor(bot) {
