@@ -22,7 +22,7 @@ async run(message, args) {
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
     .setColor(`RANDOM`)
     .setThumbnail("https://i.imgur.com/UmW0gpm.png", true)
-    .addField("✅ **Bot is up for:**", `${duration}` + ".")
+    .setDescription("✅ **Bot is up for: **" +  `${duration}` + ".")
     .addField("» Ping ", `${Date.now() - message.createdTimestamp}` + "ms", true)
     .addField("» Total Users", `${this.bot.users.size.toLocaleString()}`, true)
     .addField("» OS", `${os.platform()}`, true)
