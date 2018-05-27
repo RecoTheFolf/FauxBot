@@ -44,7 +44,7 @@ await keyPerms.forEach(p => {if (member.permissions.has(p)) {perms.push(p)}})
     .addField("**Roles**", `${member.roles.size == 1 ? "None" : member.roles.filter(r => r.name != `@everyone`).map(r => `${r}`).join(' ')}`, false)
     .addField("**Joined At**", `${moment.utc(member.joinedAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
     .addField("**Account Created At**", `${moment.utc(member.user.createdAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
-    .setFooter(member.id)
+    .setFooter("FauxBot User Information")
     .setTimestamp();
 
 if (perms.length > 0) userembed.addField('User Permissions',perms.join(', ').toLocaleUpperCase().replaceAll('_',' '),true);

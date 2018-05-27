@@ -53,7 +53,7 @@ class Serverinfo extends Command {
   .addField('**Voice Channels**', voiceChannels, true)
   .addField('**Roles**', `${guild.roles.size}`, true)
   .addField('**Emojis**', `${guild.emojis.size}`, true)
-  .setFooter(guild.id)
+  .setFooter("FauxBot Server Information")
   .setTimestamp();
 
   return message.channel.send(embed);

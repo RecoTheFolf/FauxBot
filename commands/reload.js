@@ -26,7 +26,9 @@ async run (message, args) {
     this.bot.commands.set(args[0],new (require(`./${args[0]}.js`))(this.bot))
   let Aembed = new Discord.MessageEmbed()
   .setTitle("Reloading..")
+  .setColor("RANDOM")
   .setDescription(`${args[0]}.js successfully reloaded!`)
+  .setFooter("FauxBot Reload Command")
 
     return message.channel.send(Aembed);
      }catch(e){

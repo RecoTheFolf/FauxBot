@@ -15,7 +15,8 @@ async run (message, args) {
   let embed = new Discord.MessageEmbed()
   .setTitle("Restart")
   .setDescription("Sorry, the `restart` command can only be executed by the Bot Developers.")
-  .setColor("#cdf785");
+  .setColor("#cdf785")
+  .setFooter("FauxBot Restart Command")
   if(!config.developers.includes(message.author.id)) return message.channel.send(embed);
   
 message.channel.send(`Restarted in ${Math.floor(this.bot.ping)}ms`).then(() =>{

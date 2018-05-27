@@ -25,7 +25,8 @@ await this.bot.settings.get(message.guild.id).update({settings:settings}).catch(
   .setTitle("Prefix Customization")
   .setThumbnail(this.bot.user.displayAvatarURL)
   .setColor("RANDOM")
-  .addField(`Set to`, `\`${args[0]}\``);
+  .addField(`Set to`, `\`${args[0]}\``)
+  .setFooter("FauxBot Prefix Command");
 
   message.channel.send(sEmbed);
 

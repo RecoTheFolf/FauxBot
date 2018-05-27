@@ -13,9 +13,10 @@ class Ping extends Command {
 async run (message,args) {
     let pingembed = new Discord.MessageEmbed()
     .setAuthor(message.author.tag, message.author.displayAvatarURL())
-    .setColor(config.limegreen)
+    .setColor("RANDOM")
     .setDescription("Bot Latency")
     .addField("🏓 Ping ", `${Date.now() - message.createdTimestamp}` + "ms")
+    .setFooter("FauxBot Ping Command")
     return message.channel.send(pingembed);
     
 }

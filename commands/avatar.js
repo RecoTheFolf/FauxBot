@@ -43,6 +43,7 @@ class Avatar extends Command {
                           .setImage(definedUser.avatarURL())
                           .setTitle(`Avatar Preview`)
                           .setColor(`RANDOM`)
+                          .setFooter("FauxBot Avatar Command")
                          })
     
   

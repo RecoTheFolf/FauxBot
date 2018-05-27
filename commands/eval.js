@@ -39,7 +39,8 @@ class Eval extends Command {
         .addField(":inbox_tray: Input", `\`\`\`js\n${code}\n\`\`\``)
         .addField(":outbox_tray: Output", `\`\`\`js\n${clean(evaled).replaceAll(this.bot.token, "No, bad!")}\n\`\`\``)
         .addField('Type', `\`\`\`xl\n${(typeof rawEvaled).substr(0, 1).toUpperCase() + (typeof rawEvaled).substr(1)}\n\`\`\``)
-        .setColor('GREEN');
+        .setColor('GREEN')
+        .setFooter("FauxBot Evaluation Command")
         message.channel.send({embed});
       } catch (err) {
         
