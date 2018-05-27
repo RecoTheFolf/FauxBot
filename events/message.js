@@ -9,17 +9,14 @@ async run(message) {
 
    const settings = message.guild ? await this.bot.settings.get(message.guild.id).getField('settings').run() :  this.bot.config.defaultSettings
 
-console.log(settings)
-
     if (!message.content.startsWith(settings.prefix.value)) return;
-console.log(1)
 
     //let prefix = botconfig.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
     let commandfile = this.bot.commands.get(cmd.slice(settings.prefix.value.length));
-    console.log(commandfile)
+
     if(!commandfile) return;
     if (commandfile.conf.guildOnly && message.channel.type === 'dm') return message.channel.send("This command cannot be used in DM's")
     

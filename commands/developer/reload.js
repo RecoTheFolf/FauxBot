@@ -23,7 +23,10 @@ async run (message, args) {
 
   try{
     //delete require.cache[require.resolve(`./${args[0]}.js`)];
-    this.bot.commands.set(args[0],new (require(`./${args[0]}.js`))(this.bot))
+    const cmd = this.bot.commands.get(args[0])
+    if (!cmd) return message.channel.send(`${args[0]} is not a command`)
+
+    this.bot.commands.set(args[0],new (require(`../${cmd.conf.category}/${args[0]}.js`))(this.bot))
   let Aembed = new Discord.MessageEmbed()
   .setTitle("Reloading..")
   .setColor("RANDOM")
