@@ -15,7 +15,7 @@ async run (message,args) {
     .setAuthor(message.author.tag, message.author.displayAvatarURL())
     .setColor(config.limegreen)
     .setDescription("Bot Latency")
-    .addField("Ping ", `${Date.now() - message.createdTimestamp}` + "ms")
+    .addField("🏓 Ping ", `${Date.now() - message.createdTimestamp}` + "ms")
     return message.channel.send(pingembed);
     
 }

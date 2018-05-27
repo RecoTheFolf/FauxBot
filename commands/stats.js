@@ -10,7 +10,7 @@ class Stats extends Command {
       super(bot,{ 
           name:'stats',
           description: "Stats about the bot",
-          guildOnly:true
+          guildOnly:true,
       })
   }
 
@@ -22,7 +22,7 @@ async run(message, args) {
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
     .setColor(`RANDOM`)
     .setThumbnail("https://i.imgur.com/UmW0gpm.png", true)
-    .setDescription("✅ **Bot is up for: **" +  `${duration}` + ".")
+    .setDescription("<:GreenTick:450167691240669186> **Bot is up for: **" +  `${duration}` + ".")
     .addField("» Ping ", `${Date.now() - message.createdTimestamp}` + "ms", true)
     .addField("» Total Users", `${this.bot.users.size.toLocaleString()}`, true)
     .addField("» OS", `${os.platform()}`, true)
@@ -34,7 +34,7 @@ async run(message, args) {
     .addField("» CPU Cores", `${os.cpus().length}`, true)
     .addField("» Ram Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
     .addField("» Total Commands", "10", true)
-    .addField("» Links", "Coming Soon!")
+    .addField("» Links", "<:Discord:450171955384025088> [Support Server](https://discord.gg/sFjKcd5) | [Bot Invite](https://discordapp.com/api/oauth2/authorize?client_id=447972712795865088&permissions=8&scope=bot)")
     .addField("» Command Executions", "Coming Soon!")
     .addField("» Bot Owner", "Reconal#0001 (119799610670579714)")
     .addField("» Bot Start Time", `${moment.utc(this.bot.readyAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
