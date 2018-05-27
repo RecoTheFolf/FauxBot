@@ -35,6 +35,7 @@ async run(message, args) {
     .addField("» Ram Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
     .addField("» Total Commands", "10", true)
     .addField("» Links", "Coming Soon!")
+    .addField("» Command Executions", "Coming Soon!")
     .addField("» Bot Owner", "Reconal#0001 (119799610670579714)")
     .addField("» Bot Start Time", `${moment.utc(this.bot.readyAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
     .setTimestamp()
