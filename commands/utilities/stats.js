@@ -36,7 +36,7 @@ async run(message, args) {
     .addField("» Total Commands", "11", true)
     //.addField("» Links", "<:Discord:450171955384025088> [Support Server]() | [Bot Invite]()")
     .addField("» Command Executions", "Coming Soon!")
-    .addField("» Bot Owner", "Reconal#0001 (119799610670579714)")
+    .addField("» Bot Developers", "Reconal#0001 (119799610670579714) \nPawky#3299 (245419467843174401)")
     .addField("» Bot Start Time", `${moment.utc(this.bot.readyAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
     .setTimestamp()
     .setFooter("FauxBot Statistics");
