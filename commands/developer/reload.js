@@ -8,7 +8,7 @@ class Reload extends Command {
   constructor(bot) {
       super(bot,{ 
           name:'reload',
-          description: "Reload the command",
+          description: "Reloads any command specified.",
           guildOnly:true
       })
   }

@@ -1,6 +1,6 @@
 {
   "name": "FauxBot",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "FauxBot in development",
   "main": "bot.js",
   "dependencies": {
