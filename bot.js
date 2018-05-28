@@ -21,11 +21,12 @@ super({fetchAllMembers:true,disableEveryone:true}); //Cache users so that there'
         this.commands = new Discord.Collection();
         this.streamData = new Discord.Collection();
         this.botconfig = require("./settings.js");
-        this.prefixes= require('./prefixes.js')
+        this.prefixes= require('./prefixes.js');
         this.events = new Discord.Collection();
-        this.settings = r.table('settings')
-        this.config = require('./settings.js')
-        this.token = require('./token.json')
+        this.settings = r.table('settings');
+        this.config = require('./settings.js');
+        this.token = require('./token.json');
+        this.categories = []
     }//Close constructor
 }//Close class
 
@@ -51,6 +52,7 @@ String.prototype.replaceAll = function(search, replacement) {
         thisCommands.forEach(async co => {
             const cmd = new (require(`./commands/${c}/${co}`))(bot)
             cmd.conf.category = c
+            if (!bot.categories.includes(c)) bot.categories.push(c);
             bot.commands.set(co.split('.')[0],cmd)
         })
     })

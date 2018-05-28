@@ -6,7 +6,7 @@ class Eval extends Command {
   constructor(bot) {
       super(bot,{ 
           name:'eval',
-          description: "Latency of the bot",
+          description: "Evaluates arbitrary javascript code",
       })
   }
 
