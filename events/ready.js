@@ -7,7 +7,7 @@ async run() {
     const Discord = require('discord.js');
 
     console.info(`${this.bot.user.username} is online and in ${this.bot.guilds.size} servers!`);
-    this.bot.user.setActivity("on Development Branch v0.3! | Use --help for a list of commands");
+    this.bot.user.setActivity("Use --help for a list of commands" + `\n\n| in ${this.bot.guilds.size} server(s)!`);
 
     this.bot.sets = {}
     for (var s in this.bot.config.defaultSettings) {

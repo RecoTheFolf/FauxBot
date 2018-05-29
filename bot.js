@@ -14,6 +14,7 @@ const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.json");
 const Discord = require("discord.js");
 const r = require('rethinkdbdash')({db:`FauxBot`})();
+const client = new Discord.Client() // New client
 
 class Faux extends Discord.Client {
     constructor(options) {
@@ -31,6 +32,7 @@ super({fetchAllMembers:true,disableEveryone:true}); //Cache users so that there'
 }//Close class
 
 const bot = new Faux(); //Boot
+
 
 const fs = require("fs");
 require("./functions.js")(bot);//Load useful functions into client/bot for easy grabbing
@@ -67,5 +69,6 @@ String.prototype.replaceAll = function(search, replacement) {
     })
     bot.login(bottoken.token)
 }
+
 
 initialize();
