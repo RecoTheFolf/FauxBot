@@ -5,7 +5,7 @@ module.exports = class {
 
 async run(guild) {
 
-await this.bot.settings.insert({id:g.id,settings:this.bot.sets}).run(); //Add default settings to server DB
+await this.bot.settings.insert({id:guild.id,settings:this.bot.sets}).run(); //Add default settings to server DB
 }
 
 }
