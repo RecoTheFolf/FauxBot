@@ -5,7 +5,7 @@ module.exports = class {
 
 async run(guild) {
 
-await this.bot.settings.get(g.id).delete().run().catch(console.log); //Delete server from database
+await this.bot.settings.get(guild.id).delete().run().catch(console.log); //Delete server from database
 }
 
 }
