@@ -21,6 +21,7 @@ async run() {
             g.new = true
             console.log("Adding settings to DB")
             await this.bot.settings.insert({id:g.id,settings:this.bot.sets}).run()
+            g.settings = this.bot.sets
             return false
         });
        if (settings) {
@@ -29,14 +30,14 @@ async run() {
                 console.log(`Adding ${s} to ${g.name}'s database`)
                 settings[s] = this.bot.sets[s]
                 await this.bot.settings.get(g.id).update({settings:settings}).run()
+                g.settings = settings
             }
             for (var s in settings) {
                 if (!this.bot.config.defaultSettings[s]) {
                     console.log(`Removing ${s} from ${g.name}'s database`)
-                    console.log(settings)
                     await delete settings[s];
-                    console.log(settings)
                     await this.bot.settings.get(g.id).update({settings:settings}).run();
+                    g.settings = settings
                 }
             }
         }
