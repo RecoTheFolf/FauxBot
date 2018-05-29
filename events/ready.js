@@ -36,8 +36,8 @@ async run() {
                 if (!this.bot.config.defaultSettings[s]) {
                     console.log(`Removing ${s} from ${g.name}'s database`)
                     await delete settings[s];
-                    await this.bot.settings.update({ settings: [] }).run();
-                    await this.bot.settings.update({ settings: settings }).run();
+                    await this.bot.settings.get(g.id).update({ settings: [] }).run();
+                    await this.bot.settings.get(g.id).update({ settings: settings }).run();
                     g.settings = settings
                 }
             }
