@@ -24,6 +24,7 @@ async run() {
             g.settings = this.bot.sets
             return false
         });
+        g.settings = settings
        if (settings) {
         for (var s in this.bot.config.defaultSettings) {
             if (!settings[s]) {//If a new setting has been added, and it is not added to server settings db
