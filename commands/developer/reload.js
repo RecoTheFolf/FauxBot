@@ -9,7 +9,8 @@ class Reload extends Command {
       super(bot,{ 
           name:'reload',
           description: "Reloads any command specified.",
-          guildOnly:true
+          guildOnly:true,
+          usage: "reload eval", 
       })
   }
 

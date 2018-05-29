@@ -8,7 +8,8 @@ class Avatar extends Command {
       super(bot,{ 
           name:'avatar',
           description: "Get you, or another users icon/avatar",
-          guildOnly:true
+          guildOnly:true,
+          usage: "avatar <@​user/user-id>",
       })
   }
     async run(message,args) {

@@ -6,6 +6,7 @@ class Help extends Command {
       super(bot,{ 
           name:'help',
           description: "Return useful information on commands or settings",
+          usage: "help [command]"
       })
   }
 
@@ -43,7 +44,7 @@ if (cmd) {
     .setTitle("FauxBot Help")
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
     .setColor(`RANDOM`)
-    .addField("Commands", `${cmd.help.name} | ${cmd.help.description}`)
+    .addField("Commands", `${cmd.help.name} | ${cmd.help.description} \n\n**Usage**: \n${cmd.help.usage}`)
     .setTimestamp()
     .setFooter("FauxBot Help Command");
 
@@ -53,7 +54,16 @@ if (cmd) {
 const set = this.bot.config.defaultSettings[args[0].toLowerCase()]
 
 if (set) {
-    message.channel.send(`${args[0].toLowerCase()} help\n\nDescription: ${set.description}\nDefault: \`${set.value}\``)
+    let hsetembed = new Discord.MessageEmbed()
+    .setTitle("FauxBot Help")
+    .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
+    .setColor(`RANDOM`)
+    .addField("Command Usage", `${args[0].toLowerCase()} \n\nDescription: ${set.description}\nDefault: \`${set.value}\``)
+    .setTimestamp()
+    .setFooter("FauxBot Help Command");
+
+    return message.channel.send(hsetembed);
+
 }
 
 }

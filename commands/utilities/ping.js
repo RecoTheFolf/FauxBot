@@ -15,7 +15,7 @@ async run (message,args) {
     .setAuthor(message.author.tag, message.author.displayAvatarURL())
     .setColor("RANDOM")
     .setDescription("Bot Latency")
-    .addField("🏓 Ping ", `${message.createdTimestamp - Date.now()}` + "ms")
+    .addField("🏓 Ping ", `${Date.now() - message.createdTimestamp}` + "ms")
     .setFooter("FauxBot Ping Command")
     return message.channel.send(pingembed);
     

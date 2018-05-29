@@ -9,7 +9,8 @@ class Say extends Command {
       super(bot,{ 
           name:'say',
           description: "Make the bot say anything you want",
-          guildOnly:true
+          guildOnly:true,
+          usage: "say Test",
       })
   }
 

@@ -5,7 +5,8 @@ class Set extends Command {
       super(bot,{ 
           name:'set',
           description: "Set various guild settings",
-          guildOnly:true
+          guildOnly:true,
+          usage: "set prefix -",
       })
   }
 

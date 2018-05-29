@@ -7,6 +7,7 @@ class Eval extends Command {
       super(bot,{ 
           name:'eval',
           description: "Evaluates arbitrary javascript code",
+          usage: "eval Test",
       })
   }
 

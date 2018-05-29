@@ -11,7 +11,8 @@ class Userinfo extends Command {
         super(bot,{ 
             name:'userinfo',
             description: "Get information on a user",
-            guildOnly:true
+            guildOnly:true,
+            usage: "userinfo <@​user/user-id>",
         })
     }
 

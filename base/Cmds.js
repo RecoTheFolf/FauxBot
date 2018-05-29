@@ -3,11 +3,12 @@ class Command {
       name = null,
       description = "No description provided.",
       guildOnly = false,
-      category = "undefined"
+      category = "undefined",
+      usage = "undefined"
     }) {
       this.bot = bot;
       this.conf = {guildOnly};
-      this.help = { name, description, category};
+      this.help = { name, description, category, usage};
     }
   }
 
