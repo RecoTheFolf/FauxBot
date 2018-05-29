@@ -44,7 +44,7 @@ class Eval extends Command {
         message.channel.send({embed});
       } catch (err) {
         
-        message.channel.send(`\`ERROR\` \`\`\`js\n${clean(err)}\n\`\`\``);
+       return [0,`\`ERROR\` \`\`\`js\n${clean(err)}\n\`\`\``]
       }
 }
 

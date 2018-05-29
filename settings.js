@@ -18,8 +18,8 @@ const settings = {
              name:'prefix',
          value:'--',
          description:'Set the prefix for the bot',
-         set: async function(value,guild) {}, //This function sets the value
-         view: async function(guild) {} //For viewing the setting
+         set: async (value,guild) => value, //This function sets the value
+         view: (settings) => settings.prefix //For viewing the setting
          }
     },
 perms:{

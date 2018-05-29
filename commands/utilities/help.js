@@ -48,7 +48,12 @@ if (cmd) {
     .setFooter("FauxBot Help Command");
 
     return message.channel.send(hcmdembed);
+}
 
+const set = this.bot.config.defaultSettings[args[0].toLowerCase()]
+
+if (set) {
+    message.channel.send(`${args[0].toLowerCase()} help\n\nDescription: ${set.description}\nDefault: \`${set.value}\``)
 }
 
 }

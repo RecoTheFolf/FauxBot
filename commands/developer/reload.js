@@ -25,8 +25,10 @@ async run (message, args) {
     //delete require.cache[require.resolve(`./${args[0]}.js`)];
     const cmd = this.bot.commands.get(args[0])
     if (!cmd) return message.channel.send(`${args[0]} is not a command!`)
-
+const cat = cmd.conf.category
     this.bot.commands.set(args[0],new (require(`../${cmd.conf.category}/${args[0]}.js`))(this.bot))
+    this.bot.commands.get(cmd.help.name).conf.category = cmd.conf.category
+
   let Aembed = new Discord.MessageEmbed()
   .setTitle("Reloading..")
   .setColor("RANDOM")
@@ -35,7 +37,7 @@ async run (message, args) {
 
     return message.channel.send(Aembed);
      }catch(e){
-     return message.channel.send("There is no such command!")
+     return message.channel.send("Error: "+e)
      }
 }
 }

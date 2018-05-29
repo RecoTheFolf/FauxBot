@@ -38,6 +38,7 @@ async run(message, args) {
     .addField("» Command Executions", "Coming Soon!")
     .addField("» Bot Developers", "Reconal#0001 (119799610670579714) \nPawky#3299 (245419467843174401)")
     .addField("» Bot Start Time", `${moment.utc(this.bot.readyAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
+    .addField("» Shard", `${this.bot.shard ? this.bot.shard.count : 1}`)
     .setTimestamp()
     .setFooter("FauxBot Statistics");
 
