@@ -18,7 +18,7 @@ if (message.channel.type === 'dm') return;
   if(!args[0]) return message.channel.send("Please specify something!")
 
 const settings = await this.bot.settings.get(message.guild.id).getField('settings').run();
-settings.prefix.value = args[0]
+settings.prefix = args[0]
 await this.bot.settings.get(message.guild.id).update({settings:settings}).catch(r => console.log(r))
   let sEmbed = new Discord.MessageEmbed()
   .setColor("#FF9900")
