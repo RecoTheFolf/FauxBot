@@ -28,7 +28,7 @@ class Cat extends Command {
   
     })
   } catch(err) {
-    message.channel.send(`<:RedX:451263237434900491> An error occurred.  This is a problem with the API or post method.  This is not bot-related.`)
+    message.channel.send(`<:RedX:451263237434900491> An error occurred.  This is a problem with the API or post method.  This is not bot-related.`) + console.log(err)
   }
 }
 
