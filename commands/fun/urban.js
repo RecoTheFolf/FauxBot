@@ -7,9 +7,10 @@ const { get } = require("snekfetch");
 class Urban extends Command {
   constructor(bot) {
       super(bot,{ 
-          name:'Urban',
+          name:'urban',
           description: "Search up words via Urban Dictionary",
           guildOnly:true,
+          usage: "urban <word>",
       })
   }
 
