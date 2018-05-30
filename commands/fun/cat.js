@@ -16,7 +16,7 @@ class Cat extends Command {
 
     const snekfetch = require('snekfetch')
     try {
-    await snekfetch.post('http://aws.random.cat/meow').then(request => {
+    await snekfetch.post('https://aws.random.cat/meow').then(request => {
   
   if (!message.guild || message.channel.permissionsFor(message.guild.me).has(['ATTACH_FILES'])) {
   
