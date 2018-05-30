@@ -13,6 +13,7 @@ class Cat extends Command {
   }
 
 async run(message, args) {
+    const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
     try {
         get('https://aws.random.cat/meow').then(res => {
             const embed = new Discord.MessageEmbed()
