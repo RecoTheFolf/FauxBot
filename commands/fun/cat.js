@@ -12,20 +12,26 @@ class Cat extends Command {
       })
   }
 
-async run(message, args) {
-    const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
+  async run(message, args) { // eslint-disable-line no-unused-vars
+
+    const snekfetch = require('snekfetch')
     try {
-        get('https://aws.random.cat/meow').then(res => {
-            const embed = new Discord.MessageEmbed()
-            .setTitle("Random Cat :3")
-            .setAuthor(member.user.tag, member.user.displayAvatarURL())
-            .setColor(`RANDOM`)
-            .setImage(res.body.file)
-            return message.channel.send({embed});
-        });
-    } catch(err) {
-        return message.channel.send("An error occurred.  This is a problem with the API or post method.  This is not bot-related");
-    }
+    await snekfetch.post('http://aws.random.cat/meow').then(request => {
+  
+  if (!message.guild || message.channel.permissionsFor(message.guild.me).has(['ATTACH_FILES'])) {
+  
+  message.channel.send('',{"files":[JSON.parse(request.text).file]}).catch(err => {message.channel.send("<:redTick:312314733816709120> | An error occurred making that request.  Don't worry, you always have me! :cat:")})
+  } else {
+  message.channel.send(JSON.parse(request.text).file)
+  
+  }
+  
+    })
+  } catch(err) {
+    message.channel.send(`<:redTick:312314733816709120> An error occurred.  This is a problem with the API or post method.  This is not bot-related`)
+  }
 }
+
 }
+
 module.exports = Cat;
