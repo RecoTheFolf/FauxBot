@@ -11,7 +11,7 @@ class Serverinfo extends Command {
     }
   
     async run(message,args) {
-
+const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
   let guild = message.guild;
   let icon = message.guild.iconURL();
 

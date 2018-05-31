@@ -3,11 +3,34 @@ module.exports = class {
       this.bot = bot;
     }
 
-async run() {
+async run(message, args) {
     const Discord = require('discord.js');
 
-    console.info(`${this.bot.user.username} is online and in ${this.bot.guilds.size} servers!`);
+    let rembed = new Discord.MessageEmbed()
+    .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
+    .setColor("ORANGE")
+    .setThumbnail("https://cdn.discordapp.com/emojis/451575382492184588.png?v=1", true)
+    .setDescription("Loading...")
+    .addField("Bot is starting, please wait", "``Check console for any errors.``")
+    .setTimestamp()
+    .setFooter("FauxBot is currently loading..");
+    this.bot.channels.get('450174829832830976').send(rembed);
+
+    console.info(`${this.bot.user.username} is online with ${this.bot.users.size} users, in ${this.bot.channels.size} channels of ${this.bot.guilds.size} guilds.`);
     this.bot.user.setActivity("Use --help for a list of commands" + `\n\n| in ${this.bot.guilds.size} server(s)!`);
+    
+    let frembed = new Discord.MessageEmbed()
+    .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
+    .setColor("GREEN")
+    .setThumbnail("https://cdn.discordapp.com/emojis/451575470551465994.png?v=1", true)
+    .setDescription("Ready!")
+    .addField(`${this.bot.user.username}`, `Online and running!`)
+    .addField(`Users:`, `${this.bot.users.size}`)
+    .addField(`Channels:`, `${this.bot.channels.size}`)
+    .addField(`Guilds:`, `${this.bot.guilds.size}`)
+    .setTimestamp()
+    .setFooter("FauxBot Loaded");
+    this.bot.channels.get('450174829832830976').send(frembed);
 
     this.bot.sets = {}
     for (var s in this.bot.config.defaultSettings) {
