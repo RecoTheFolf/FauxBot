@@ -7,9 +7,9 @@ class e621 extends Command {
   constructor(bot) {
       super(bot,{ 
           name:'e621',
-          description: "e621 testing",
+          description: "e621 (Currently broke, please do not test | Will post safe images though in channels)",
           guildOnly:true,
-          usage: "testing"
+          usage: "currently broke"
       })
   }
   async run (msg, args, params, choice) {
