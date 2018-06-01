@@ -9,10 +9,11 @@ const youtube = require('simple-youtube-api')
 
 class Neeval extends Command {
   constructor(bot) {
-    
     super(bot, {
       name: "neeval",
       description: "Evaluates arbitrary Javascript without embeds.",
+      guildOnly:true,
+      usage: "neeval", 
     });
     
   }
