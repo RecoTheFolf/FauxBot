@@ -46,6 +46,7 @@ const gData = this.bot.streamData.get(g.id);
 gData.set('displayChannel',null);
 gData.set('voiceChannel',null);
 gData.set('queue',[]);
+g.steamData = gData
 
 
         const settings = await this.bot.settings.get(g.id).getField('settings').run().catch(async e => {
