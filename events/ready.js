@@ -41,12 +41,12 @@ async run(message, args) {
         console.info(`Running for ${g.name}`)
 
 //Start queue data
-await this.bot.streamData.set(g.id,new Discord.Collection())
-const gData = this.bot.streamData.get(g.id);
-gData.set('displayChannel',null);
-gData.set('voiceChannel',null);
-gData.set('queue',[]);
-g.steamData = gData
+this.bot.streamData.set(g.id,new Discord.Collection())
+this.bot.streamData.get(g.id).set('displayChannel',null);
+this.bot.streamData.get(g.id).set('voiceChannel',null);
+this.bot.streamData.get(g.id).set('queue',[]);
+g.streamData = this.bot.streamData.get(g.id)
+
 
 
         const settings = await this.bot.settings.get(g.id).getField('settings').run().catch(async e => {
