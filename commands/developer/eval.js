@@ -1,5 +1,51 @@
+const Command = require("../../base/Cmds.js");
+const Discord = require("discord.js");
+const { promisify } = require("util");
+const readdir = promisify(require("fs").readdir);
+const r = require("rethinkdbdash")({ db: "FauxBot" });
+const youtube = require('simple-youtube-api')
+
+
+class Eval extends Command {
+  constructor(bot) {
+    
+    super(bot, {
+      name: "eval",
+      description: "Evaluates arbitrary Javascript.",
+    });
+    
+  }
+
+  async run(message, args, level) {
+
+    const YouTube = new youtube(this.bot.tokens.ytKey)
+    const client = this.bot
+    const bot = this.bot
+    //load these resources for easy grabbing
+
+    const code = args.join(" ");
+    const settings = message.settings
+    const msg = message //for easier reference
+    const guild = message.guild ? message.guild : null
+
+    try {
+      const evaled = eval(code);
+      const clean = await this.bot.clean(this.bot, evaled);
+      message.channel.send(`\`\`\`js\n${clean}\n\`\`\``);
+    } catch (err) {
+      message.channel.send(`\`ERROR\` \`\`\`xl\n${await this.bot.clean(this.bot, err)}\n\`\`\``);
+    }
+  }
+}
+
+module.exports = Eval;
+
+
+/*
+
 const Discord = require("discord.js");
 const config = require("../../settings.js");
+const youtube = require('simple-youtube-api');
 const Command = require('../../base/Cmds.js');
 
 class Eval extends Command {
@@ -12,6 +58,7 @@ class Eval extends Command {
   }
 
   async run(message,args) {
+    const YouTube = new youtube(this.bot.tokens.ytKey)
     const guild = message.guild ? message.guild : null
     const msg = message
     const settings = message.settings
@@ -55,3 +102,6 @@ class Eval extends Command {
 
 
 module.exports = Eval;
+
+
+*/

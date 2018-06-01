@@ -15,6 +15,17 @@ module.exports = (bot) => {
         return text;
     }
 
+    bot.awaitReply = async (msg, question, limit = 15000) => {
+      const filter = m=>m.author.id === msg.author.id;
+      await msg.channel.send(question);
+      try {
+        const collected = await msg.channel.awaitMessages(filter, { max: 1, time: limit, errors: ["time"] });
+        return collected.first().content;
+      } catch (e) {
+        return false;
+      }
+    };
+
     bot.play = async () => {
       
     }
