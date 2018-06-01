@@ -33,7 +33,7 @@ async run(message, args) {
     .addField("» NodeJS Version", `${process.version}`, true)
     .addField("» CPU Cores", `${os.cpus().length}`, true)
     .addField("» Ram Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
-    .addField("» Total Commands", "16", true)
+    .addField("» Total Commands", "20", true)
     //.addField("» Links", "<:Discord:450171955384025088> [Support Server]() | [Bot Invite]()")
     .addField("» Command Executions", "Coming Soon!")
     .addField("» Bot Developers", "Reconal#0001 (119799610670579714) \nPawky#3299 (245419467843174401)")
