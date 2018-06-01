@@ -16,7 +16,7 @@ async run(message, args, level) {
     let token = this.bot.token;
     let yttoken = this.bot.tokens.ytKey;
     let devtoken = this.bot.tokens.devToken;
-    let settings = this.bot.settings;
+    let settings = this.bot.config;
     let embed = new Discord.MessageEmbed()
   .setTitle("Evaluation")
   .setDescription("Sorry, the `exec` command can only be executed by the Bot Developers.")
