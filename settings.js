@@ -12,6 +12,7 @@ const settings = {
     "ownerID": "119799610670579714",
 	"consoleLevel": "info",
     "fileLevel": "info",
+    "ytapikey": "AIzaSyDsqPzecVSjtj9Jm7RNmIuvnfk6IxO2J5U",
     defaultSettings: {
      
          prefix: {
