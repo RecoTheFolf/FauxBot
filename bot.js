@@ -13,7 +13,7 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.js");
 const Discord = require("discord.js");
-const r = require('rethinkdbdash')({db:`FauxBotDev`})();
+const r = require('rethinkdbdash')({db:`FauxBot`})();
 
 class Faux extends Discord.Client {
     constructor(options) {
@@ -66,7 +66,7 @@ String.prototype.replaceAll = function(search, replacement) {
         const event = new (require(`./events/${f}`))(bot);
         bot.on(eventName, (...args) => event.run(...args))
     })
-    bot.login(bottoken.devToken)
+    bot.login(bottoken.discordToken)
 }
 
 
