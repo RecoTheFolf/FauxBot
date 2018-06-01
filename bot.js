@@ -11,9 +11,9 @@ try {
 //load constants
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
-const bottoken = require("./devtoken.json");
+const bottoken = require("./token.json");
 const Discord = require("discord.js");
-const r = require('rethinkdbdash')({db:`FauxBotDev`})();
+const r = require('rethinkdbdash')({db:`FauxBot`})();
 
 class Faux extends Discord.Client {
     constructor(options) {
