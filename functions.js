@@ -15,4 +15,8 @@ module.exports = (bot) => {
         return text;
     }
 
+    bot.play = async () => {
+      
+    }
+
 }

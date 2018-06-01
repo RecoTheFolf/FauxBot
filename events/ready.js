@@ -39,6 +39,15 @@ async run(message, args) {
 
     this.bot.guilds.forEach(async g => {
         console.info(`Running for ${g.name}`)
+
+//Start queue data
+await this.bot.streamData.set(g.id,new Discord.Collection())
+const gData = this.bot.streamData.get(g.id);
+gData.set('displayChannel',null);
+gData.set('voiceChannel',null);
+gData.set('queue',[]);
+
+
         const settings = await this.bot.settings.get(g.id).getField('settings').run().catch(async e => {
             //if no settings
             g.new = true
