@@ -1,36 +1,40 @@
 {
-  "name": "FauxBot",
-  "version": "0.0.3",
-  "description": "FauxBot in development",
-  "main": "bot.js",
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "circular-json": "^0.5.3",
-    "discord.js": "github:hydrabolt/discord.js#master",
-    "eris": "^0.8.5",
-    "got": "^8.3.1",
-    "moment": "^2.22.1",
-    "moment-duration-format": "^2.2.2",
-    "ms": "^2.1.1",
-    "nodemon": "^1.17.2",
-    "pm2": "^2.10.4",
-    "randomstring": "^1.1.5",
-    "relevant-urban": "^2.0.0",
-    "request": "^2.87.0",
-    "request-promise-native": "^1.0.5",
-    "rethinkdbdash": "^2.3.31",
-    "simple-git": "^1.92.0",
-    "simple-youtube-api": "^5.0.2",
-    "string-similarity": "^1.2.0",
-    "superagent": "^3.8.2",
-    "winston": "^2.4.2",
-    "winston-daily-rotate-file": "^3.1.3",
-    "winston-elasticsearch": "^0.6.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Reconal#0001",
-  "license": "MIT"
+	"name": "FauxBot",
+	"version": "0.0.3",
+	"description": "FauxBot in development",
+	"main": "bot.js",
+	"dependencies": {
+		"chalk": "^2.4.1",
+		"circular-json": "^0.5.3",
+		"discord.js": "github:hydrabolt/discord.js#master",
+		"eris": "^0.8.5",
+		"got": "^8.3.1",
+		"moment": "^2.22.1",
+		"moment-duration-format": "^2.2.2",
+		"ms": "^2.1.1",
+		"nodemon": "^1.17.2",
+		"pm2": "^2.10.4",
+		"randomstring": "^1.1.5",
+		"relevant-urban": "^2.0.0",
+		"request": "^2.87.0",
+		"request-promise-native": "^1.0.5",
+		"rethinkdbdash": "^2.3.31",
+		"simple-git": "^1.95.0",
+		"simple-youtube-api": "^5.0.2",
+		"string-similarity": "^1.2.0",
+		"superagent": "^3.8.2",
+		"winston": "^2.4.2",
+		"winston-daily-rotate-file": "^3.1.3",
+		"winston-elasticsearch": "^0.6.0"
+	},
+	"devDependencies": {},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Reconal#0001",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/RecoTheFolf/FauxBot.git"
+	}
 }
