@@ -14,7 +14,7 @@ async run(message, args, level) {
 const queue = message.guild.streamData.get('queue')
 if (queue.length === 0) return [0,"Nothing is currently in the queue"]
 
-message.channel.send(`Queue:\n${queue.map(q => `\`${q.title}\` | Requested by \`${q.requester.tag}\``)}`)
+message.channel.send(`Queue:\n${queue.map(q => `\`${q.title}\` | Requested by \`${q.requester.tag}\``).join('\n')}`)
 
 
 }
