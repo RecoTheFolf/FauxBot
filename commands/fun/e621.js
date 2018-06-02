@@ -12,9 +12,9 @@ class e621 extends Command {
           usage: "currently broke"
       })
   }
-  async run (msg, args, params, choice) {
+  async run (msg, args) {
     var tagsto = "";
-    var tagstosplit = params.split(",");
+    var tagstosplit = args.split = " ";
     for (var i = 0; i < tagstosplit.length; i++) {
         tagstosplit[i] = tagstosplit[i].trim();
         tagstosplit[i] = tagstosplit[i].replace(/\s/g, "_");
