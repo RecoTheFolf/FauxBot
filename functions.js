@@ -54,6 +54,9 @@ module.exports = (bot) => {
           queue.shift();
           bot.play(guild)
           })
+          guild.voiceConnection.dispatcher.on('error', (err) => {
+            guild.streamData.set('leaveReason',`An error ocurred ${err}`)
+          })
       } catch(e) {
         await bot.streamData.get(guild.id).set('leaveReason',`An error ocurred\n${e}`)
         bot.resetStream(guild)
