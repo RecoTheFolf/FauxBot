@@ -10,7 +10,7 @@ const settings = {
     "limegreen": "#2dfc4c",
 	"consoleLevel": "info",
     "fileLevel": "info",
-    developers:["245419467843174401, 119799610670579714"],
+    developers:["245419467843174401"],
     supportStaff:[],
     ownerID: ["119799610670579714"],
     staffThreshold:5,//This will define the break between bot staff and normal users.  5 means any level 5 and above are separate from the lower levels
