@@ -8,11 +8,11 @@ const settings = {
     "blue": "#0000ff",
     "purple": "#551a8b",
     "limegreen": "#2dfc4c",
-    "ownerID": "119799610670579714",
 	"consoleLevel": "info",
     "fileLevel": "info",
     developers:["245419467843174401"],
     supportStaff:[],
+    ownerID: ["119799610670579714"],
     staffThreshold:5,//This will define the break between bot staff and normal users.  5 means any level 5 and above are separate from the lower levels
     defaultSettings: {
      
@@ -80,8 +80,8 @@ check: (msg) => msg.guild ? msg.member.permissions.has(['MANAGE_SERVER']) : fals
     {
         name:'Bot Owner',
         level:8,
-        inherits:[],
-        check: (msg) => msg.author.id === '119799610670579714'
+        inherits:[6],
+        check: (msg) => msg.bot.config.ownerID.includes(msg.author.id)
     }
     //etc
 ]

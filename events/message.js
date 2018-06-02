@@ -28,7 +28,7 @@ const msg = message
 
     const needed = this.bot.config.perms.filter(p => p.name === commandfile.conf.level)[0]
 console.log(needed)
-    if (!level.inherits.includes(needed.level) && !local.inherits.includes(needed.level) && level.level != needed.level && local.level != needed.level) return message.channel.send(`You need to be a \`${this.bot.config.perms.filter(p => p.name === commandfile.conf.level)[0].name}\` to use this command.  You you are a \`${this.bot.config.perms.filter(p => p.check(message) && p.level < this.bot.config.staffThreshold).pop().name}\``)
+    if (!level.inherits.includes(needed.level) && !local.inherits.includes(needed.level) && level.level != needed.level && local.level != needed.level) return message.channel.send(`You need to be a \`${this.bot.config.perms.filter(p => p.name === commandfile.conf.level)[0].name}\` to use this command.  You are a \`${this.bot.config.perms.filter(p => p.check(message) && p.level < this.bot.config.staffThreshold).pop().name}\``)
     const status = await commandfile.run(message,args);
     if (status && status.constructor.name === 'Array') {
     message.channel.send(`${message.author.toString()} ${status[0] ? `${this.bot.emojis.get(`450167691240669186`).toString()} `: `:x:`} ${status[1]}`)

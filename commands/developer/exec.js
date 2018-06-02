@@ -8,7 +8,7 @@ class Exec extends Command {
       super(bot,{ 
           name:'exec',
           description: "Executes any command",
-          usage: "exec google.com",
+          usage: "exec ping google.com -c 4",
           level:"Bot Developer"
       })
   }
