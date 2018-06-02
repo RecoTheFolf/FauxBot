@@ -10,7 +10,8 @@ class Reload extends Command {
           name:'reload',
           description: "Reloads any command specified.",
           guildOnly:true,
-          usage: "reload eval", 
+          usage: "reload eval",
+          level:"Bot Developer" 
       })
   }
 

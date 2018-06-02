@@ -61,6 +61,7 @@ g.streamData = this.bot.streamData.get(g.id)
        if (settings) {
         for (var s in this.bot.config.defaultSettings) {
             if (!settings[s]) {//If a new setting has been added, and it is not added to server settings db
+                if (typeof(g.settings[s] === 'object')) return;
                 console.log(`Adding ${s} to ${g.name}'s database`)
                 settings[s] = this.bot.sets[s]
                 await this.bot.settings.get(g.id).update({settings:settings}).run()

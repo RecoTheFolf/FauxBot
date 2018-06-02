@@ -8,10 +8,12 @@ const settings = {
     "blue": "#0000ff",
     "purple": "#551a8b",
     "limegreen": "#2dfc4c",
-    "developers":["119799610670579714","245419467843174401"],
     "ownerID": "119799610670579714",
 	"consoleLevel": "info",
     "fileLevel": "info",
+    developers:["245419467843174401"],
+    supportStaff:[],
+    staffThreshold:5,//This will define the break between bot staff and normal users.  5 means any level 5 and above are separate from the lower levels
     defaultSettings: {
      
          prefix: {
@@ -20,28 +22,69 @@ const settings = {
          description:'Set the prefix for the bot',
          set: async (value,guild) => value, //This function sets the value
          view: (settings) => settings.prefix //For viewing the setting
+         },
+         djRole: {
+             value:null,
+             description:"Set the role that allows users to use music commands.",
+             set: async (value,guild) => {
+                if (guild.roles.get(value)) return value;
+                if (guild.roles.find('name',value)) return guild.roles.find('name',value).id;
+             },
+             view: (settings,guild) => {
+                 if (guild.roles.get(settings.djRole)) return guild.roles.get(settings.djRole).name
+                 return;
+             } 
          }
     },
-perms:{
-    0: {
-        name:"User",
+perms:[
+    {
+        name:"Server Member",
+        level:0,
         inherits:[],
         check: (msg) => true
-    },
-
-    1:{
-        name:"DJ",
-        inherits:[],
-        check: (msg) => msg.guild ? msg.member.roles.has(`roleIDHere`) : false
-    },
-    2:{
-        name:"Moderator",
-        inherits:[],
+    },{
+        name:"Server DJ",
+        level:1,
+        inherits:[0],
+        check: (msg) => msg.guild ? msg.member.roles.has(msg.settings.djRole) : false
+    },{
+        name:"Server Moderator",
+        level:2,
+        inherits:[0,1],
         check: (msg) => msg.guild ? msg.member.permissions.has(['BAN_MEMBERS','KICK_MEMBERS']): false 
         //check: (msg) => msg.guild ? msg.member.roles.has(): false
+    },
+    {name:"Server Admin",
+level:3,
+inherits:[0,1,2],
+check: (msg) => msg.guild ? msg.member.permissions.has(['MANAGE_SERVER']) : false
+},
+{
+    name:"Server Owner",
+    level:4,
+    inherits:[0,1,2,3],
+    check: (msg) => msg.guild ? msg.guild.owner.user.id === msg.author.id : false
+},
+{
+    name:"Bot Support",
+    level:5,
+    inherits:[],
+    check:(msg) => msg.bot.config.supportStaff.includes(msg.author.id)
+},
+{
+    name:"Bot Developer",
+    level:6,
+    inherits:[],
+    check:(msg) => msg.bot.config.developers.includes(msg.author.id)
+},
+    {
+        name:'Bot Owner',
+        level:8,
+        inherits:[],
+        check: (msg) => msg.author.id === '119799610670579714'
     }
     //etc
-}
+]
 
 }
 

@@ -10,8 +10,9 @@ class Eval extends Command {
   constructor(client) {
     
     super(client, {
-      name: "eval",
-      description: "Evaluates arbitrary Javascript."
+      name: "neeval",
+      description: "Evaluates arbitrary Javascript.",
+      level:"Bot Developer"
     });
     
   }

@@ -11,6 +11,7 @@ class Say extends Command {
           description: "Make the bot say anything you want",
           guildOnly:true,
           usage: "say Test",
+          level:"Server Moderator"
       })
   }
 

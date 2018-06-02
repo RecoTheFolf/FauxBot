@@ -9,6 +9,7 @@ class Exec extends Command {
           name:'exec',
           description: "Executes any command",
           usage: "exec google.com",
+          level:"Bot Developer"
       })
   }
 
@@ -17,11 +18,6 @@ async run(message, args, level) {
     let yttoken = this.bot.tokens.ytKey;
     let devtoken = this.bot.tokens.devToken;
     let settings = this.bot.config;
-    let embed = new Discord.MessageEmbed()
-  .setTitle("Evaluation")
-  .setDescription("Sorry, the `exec` command can only be executed by the Bot Developers.")
-  .setColor("#cdf785");
-  if(!config.developers.includes(message.author.id)) return message.channel.send(embed);
     exec(`${args.join(' ')}`, (error, stdout, stderr) => {
       stdout = stdout.replace(token, "No, bad!")
       stdout = stdout.replace(yttoken, "No, bad!")

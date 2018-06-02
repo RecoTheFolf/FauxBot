@@ -8,12 +8,12 @@ class Purge extends Command {
           name:'purge',
           description: "Purge a certain amount of messages",
           guildOnly:true,
-          usage: "purge <amount>"
+          usage: "purge <amount>",
+          level:"Server Moderator"
       })
   }
 
   async run(message, args, tools) {
-    if(!message.member.hasPermission("ADMINISTRATOR")) return errors.noPerms(message, "ADMINISTRATOR");
     if (isNaN(args[0])) return message.channel.send('**Please supply a valid amount of messages to purge**');
 
     if (args[0] > 100) return message.channel.send('**Please supply a number less than 100**');

@@ -9,6 +9,7 @@ class Eval extends Command {
           name:'eval',
           description: "Evaluates arbitrary javascript code",
           usage: "eval Test",
+          level:"Bot Developer"
       })
   }
 
@@ -17,13 +18,8 @@ class Eval extends Command {
     const guild = message.guild ? message.guild : null
     const msg = message
     const settings = message.settings
-    const client = this.client
-
-    let embed = new Discord.MessageEmbed()
-    .setTitle("Evaluation")
-    .setDescription("Sorry, the `eval` command can only be executed by the Bot Developers.")
-    .setColor("#cdf785");
-    if(!config.developers.includes(message.author.id)) return message.channel.send(embed);
+    const bot = this.bot
+    const client = this.bot
     
     function clean(text) {
     if (typeof(text) === "string")

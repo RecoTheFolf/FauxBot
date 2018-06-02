@@ -7,6 +7,7 @@ class Restart extends Command {
       super(bot,{ 
           name:'restart',
           description: "Restart the bot, should automatically restart with PM2",
+          level:"Bot Developer"
       })
   }
 

@@ -9,7 +9,8 @@ class Play extends Command {
       super(bot,{ 
           name:'play',
           description: "Play media from youtube",
-          guildOnly: true
+          guildOnly: true,
+          level:"Server DJ"
       })
   }
 

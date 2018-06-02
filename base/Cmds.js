@@ -4,10 +4,11 @@ class Command {
       description = "No description provided.",
       guildOnly = false,
       category = "undefined",
-      usage = "undefined"
+      usage = "undefined",
+      level = "Server Member"
     }) {
       this.bot = bot;
-      this.conf = {guildOnly};
+      this.conf = {guildOnly,level};
       this.help = { name, description, category, usage};
     }
   }
