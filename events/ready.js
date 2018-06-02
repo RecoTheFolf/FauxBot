@@ -79,6 +79,7 @@ g.streamData = this.bot.streamData.get(g.id)
        }
       }
     )
+    this.bot.wait(3000) //Add a three second wait so variables and other data can be set.  
 }
 
 }

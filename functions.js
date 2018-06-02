@@ -12,7 +12,6 @@ module.exports = (bot) => {
           .replace(/`/g, "`" + String.fromCharCode(8203))
           .replace(/@/g, "@" + String.fromCharCode(8203))
           .replace(bot.tokens.discordToken, randomstring.generate(24)+"."+randomstring.generate(6)+"."+randomstring.generate(23));
-    
         return text;
     }
 
@@ -26,12 +25,15 @@ module.exports = (bot) => {
         return 'no_response';
       }
     };
-    bot.resetStream = async (guild) => {
+
+    bot.resetStream = async (guild) => { //Minimize code, make function
+
       if (bot.streamData.get(guild.id).get('leaveReason')) {
         await bot.streamData.get(guild.id).get('displayChannel').send(bot.streamData.get(guild.id).get('leaveReason'))
       } else {
         await bot.streamData.get(guild.id).get('displayChannel').send("Queue has concluded")
       }
+      //Clear
       bot.streamData.get(guild.id).set('voiceChannel','null')
       bot.streamData.get(guild.id).set('displayChannel','null')
       bot.streamData.get(guild.id).set('queue',[])
@@ -44,15 +46,15 @@ module.exports = (bot) => {
       const vChannel = guild.streamData.get('voiceChannel')
       const dChannel = guild.streamData.get('displayChannel')
 
-      if (queue.length === 0) {
+      if (queue.length === 0) { //End of queue
        return bot.resetStream(guild)
       }
       try {
         await vChannel.join().then(c => c.play(ytdl(queue[0].id, { audioonly: true }), { passes: 3 }));
-        dChannel.send(`Now playing \`${queue[0].title}\``)
-        guild.voiceConnection.dispatcher.on('end', () => {
-          queue.shift();
-          bot.play(guild)
+        dChannel.send(`Now playing \`${queue[0].title}\` requested by \`${queue[0].requester.tag}\``)
+        guild.voiceConnection.dispatcher.on('end', () => {//Fired when stream can't keep up or when stream ends
+          queue.shift();//remove the first object in the queue (queue[0])
+          bot.play(guild) //basically looping the function
           })
           guild.voiceConnection.dispatcher.on('error', (err) => {
             guild.streamData.set('leaveReason',`An error ocurred ${err}`)
@@ -63,5 +65,5 @@ module.exports = (bot) => {
       }
     }
 
-    bot.wait = require("util").promisify(setTimeout);
+    bot.wait = require("util").promisify(setTimeout); //For useful waiting
 }
