@@ -39,10 +39,10 @@ if (resultStore.size === 0) return [0,"Results were found, but all results are o
 
 if (resultStore.size === 1) {
 const choice = resultStore.first()
-} else {
-const choice = await this.bot.awaitReply(message,`${resultStore.map((r,i) => `${i} | \`${r.title}\` | ${r.duration.minutes ? `${r.duration.minutes} minutes ${r.duration.seconds ? `and ${r.duration.seconds} seconds` : ``}` : `${r.duration.seconds} seconds`}`).join('\n')}`)
+} else { 
+const choice = resultStore.get(args[0]) ? args[0] : await this.bot.awaitReply(message,`${resultStore.map((r,i) => `${i} | \`${r.title}\` | ${r.duration.minutes ? `${r.duration.minutes} minutes ${r.duration.seconds ? `and ${r.duration.seconds} seconds` : ``}` : `${r.duration.seconds} seconds`}`).join('\n')}`)
 selection = resultStore.get(choice)
-if (selection === 'no_response') return [0,"No response was received in time.  Cancelling"]
+if (choice === 'no_response') return [0,"No response was received in time.  Cancelling"]
 if (!selection) return [0,"Invalid entry"]
 }
 
