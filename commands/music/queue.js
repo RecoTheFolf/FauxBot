@@ -4,9 +4,9 @@ const Command = require('../../base/Cmds.js');
 class Queue extends Command {
   constructor(bot) {
       super(bot,{ 
-          name:'exec',
-          description: "Executes any command",
-          usage: "exec google.com",
+          name:'queue',
+          description: "Music Queue",
+          usage: "queue",
       })
   }
 

@@ -10,14 +10,15 @@ class Play extends Command {
           name:'play',
           description: "Play media from youtube",
           guildOnly: true,
-          level:"Server DJ"
+          level:"Server DJ",
+          usage: "play [ytlink]"
       })
   }
 
 async run (message,args) {
     const YouTube = new youtube(this.bot.tokens.ytKey)
     if (!message.member.voiceChannel) return [0,'You must be in a voice channel to use this']
-    if (!message.member.voiceChannel.permissionsFor(message.guild.me).has(['CONNECT','SPEAK'])) return [0,'I am missing the nescessary permissions to join and play audio in the voice channel'];
+    if (!message.member.voiceChannel.permissionsFor(message.guild.me).has(['CONNECT','SPEAK'])) return [0,'I am missing the necessary permissions to join and play audio in the voice channel'];
     if (args.length === 0) return [0,"You need to input a search query"]
     const results = await YouTube.searchVideos(args.join(' '),10) 
 var resultStore = new Discord.Collection();

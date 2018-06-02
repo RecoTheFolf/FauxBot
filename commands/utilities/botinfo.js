@@ -10,6 +10,7 @@ class Botinfo extends Command {
           name:'botinfo',
           description: "Information about the bot",
           guildOnly:true,
+          usage: "botinfo"
       })
   }
 
