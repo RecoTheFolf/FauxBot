@@ -11,6 +11,7 @@ class Urban extends Command {
           description: "Search up words via Urban Dictionary",
           guildOnly:true,
           usage: "urban <word>",
+          perms:['EMBED_LINKS']
       })
   }
 
