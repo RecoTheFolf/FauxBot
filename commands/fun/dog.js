@@ -9,7 +9,8 @@ class Dog extends Command {
           name:'dog',
           description: "Get a cute dog image :3",
           guildOnly:true,
-          usage: "dog"
+          usage: "dog",
+          perms:['EMBED_LINKS','ATTACH_FILES']
       })
   }
 

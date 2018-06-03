@@ -4,7 +4,7 @@ const Command = require('../../base/Cmds.js');
 class Volume extends Command {
   constructor(bot) {
       super(bot,{ 
-          name:'queue',
+          name:'volume',
           description: "Music Queue",
           usage: "queue",
           guildOnly:true

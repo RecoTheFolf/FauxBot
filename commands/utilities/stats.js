@@ -11,6 +11,7 @@ class Stats extends Command {
           name:'stats',
           description: "Stats about the bot",
           guildOnly:true,
+          perms:['EMBED_LINKS']          
       })
   }
 

@@ -7,7 +7,8 @@ class Ping extends Command {
       super(bot,{ 
           name:'ping',
           description: "Latency of the bot",
-          level:"Server Member"
+          level:"Server Member",
+          perms:['EMBED_LINKS']
       })
   }
 

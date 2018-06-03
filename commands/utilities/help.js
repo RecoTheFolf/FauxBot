@@ -6,7 +6,8 @@ class Help extends Command {
       super(bot,{ 
           name:'help',
           description: "Return useful information on commands or settings",
-          usage: "help [command]"
+          usage: "help [command]",
+          perms:['EMBED_LINKS']
       })
   }
 

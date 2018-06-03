@@ -5,10 +5,11 @@ class Command {
       guildOnly = false,
       category = "undefined",
       usage = "undefined",
-      level = "Server Member"//Default to server member
+      level = "Server Member",
+      perms = []
     }) {
       this.bot = bot;
-      this.conf = {guildOnly,level};
+      this.conf = {guildOnly, level, perms};
       this.help = { name, description, category, usage};
     }
   }

@@ -9,7 +9,8 @@ class Eval extends Command {
           name:'eval',
           description: "Evaluates arbitrary javascript code",
           usage: "eval Test",
-          level:"Bot Developer"
+          level:"Bot Developer",
+          perms:['EMBED_LINKS']
       })
   }
 
