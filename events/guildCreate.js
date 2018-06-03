@@ -7,7 +7,7 @@ async run(guild) {
   const Discord = require('discord.js');
 
 await this.bot.settings.insert({id:guild.id,settings:this.bot.sets}).run(); //Add default settings to server DB
-guild.settings = await this.bot.settings.insert({id:guild.id,settings:this.bot.sets}).run()
+guild.settings = await this.bot.settings.get(guild.id).getField('settings').run();
 console.log(`New guild joined: ${guild.name} (id: ${guild.id}). This guild has ${guild.memberCount} members!`);
 let gcembed = new Discord.MessageEmbed()
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
