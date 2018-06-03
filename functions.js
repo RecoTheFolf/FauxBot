@@ -50,17 +50,20 @@ module.exports = (bot) => {
        return bot.resetStream(guild)
       }
       try {
+        console.log(queue[0])
         await vChannel.join().then(c => c.play(ytdl(queue[0].id, { audioonly: true }), { passes: 3 }));
+        await vChannel.connection.dispatcher.setVolume(guild.streamData.get('volume'));
         dChannel.send(`Now playing \`${queue[0].title}\` requested by \`${queue[0].requester.tag}\``)
         guild.voiceConnection.dispatcher.on('end', () => {//Fired when stream can't keep up or when stream ends
           queue.shift();//remove the first object in the queue (queue[0])
           bot.play(guild) //basically looping the function
           })
           guild.voiceConnection.dispatcher.on('error', (err) => {
-            guild.streamData.set('leaveReason',`An error ocurred ${err}`)
+            guild.streamData.set('leaveReason',`An error ocurred ${err}\n${err.stack}`)
           })
       } catch(e) {
-        await bot.streamData.get(guild.id).set('leaveReason',`An error ocurred\n${e}`)
+        await bot.streamData.get(guild.id).set('leaveReason',`An error ocurred\n${e}\n${e.stack}`)
+       
         bot.resetStream(guild)
       }
     }

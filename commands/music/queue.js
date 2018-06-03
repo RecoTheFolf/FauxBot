@@ -7,6 +7,7 @@ class Queue extends Command {
           name:'queue',
           description: "Music Queue",
           usage: "queue",
+          guildOnly:true
       })
   }
 

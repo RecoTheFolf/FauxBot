@@ -20,7 +20,7 @@ async run (message,args) {
     if (!message.member.voiceChannel) return [0,'You must be in a voice channel to use this']
     if (!message.member.voiceChannel.permissionsFor(message.guild.me).has(['CONNECT','SPEAK'])) return [0,'I am missing the necessary permissions to join and play audio in the voice channel'];
     if (args.length === 0) return [0,"You need to input a search query"]
-    const results = await YouTube.searchVideos(args.join(' '),10) 
+    const results = await YouTube.searchVideos(args.join(' '),5) 
 var resultStore = new Discord.Collection();
 var selection = null
 
@@ -34,13 +34,14 @@ for (var b in results) {
     i++
     }
 }
-
+console.log(resultStore)
+if (resultStore.size === 0) return [0,'No results'];
 this.bot.test = resultStore
 //resultStore = await resultStore.filter(r => r.duration.minutes < 16 && r.duration.hours === 0)
 if (resultStore.size === 0) return [0,"Results were found, but all results are over 16 minutes long"]
 
 if (resultStore.size === 1) {
-const choice = resultStore.first()
+selection = resultStore.first()
 } else { 
 const choice = resultStore.get(args[0]) ? args[0] : await this.bot.awaitReply(message,`${resultStore.map((r,i) => `${i} | \`${r.title}\` | ${r.duration.minutes ? `${r.duration.minutes} minutes ${r.duration.seconds ? `and ${r.duration.seconds} seconds` : ``}` : `${r.duration.seconds} seconds`}`).join('\n')}`)
 selection = resultStore.get(choice)
