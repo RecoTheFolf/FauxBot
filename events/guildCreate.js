@@ -3,7 +3,7 @@ module.exports = class {
       this.bot = bot;
     }
 
-async run(guild, message) {
+async run(guild) {
   const Discord = require('discord.js');
 
 await this.bot.settings.insert({id:guild.id,settings:this.bot.sets}).run(); //Add default settings to server DB

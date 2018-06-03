@@ -3,7 +3,7 @@ module.exports = class {
       this.bot = bot;
     }
 
-async run(guild, message) {
+async run(guild) {
   const Discord = require('discord.js');
 
 await this.bot.settings.get(guild.id).delete().run().catch(console.log); //Delete server from database

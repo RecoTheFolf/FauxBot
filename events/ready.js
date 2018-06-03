@@ -3,7 +3,7 @@ module.exports = class {
       this.bot = bot;
     }
 
-async run(message, args) {
+async run() {
     const Discord = require('discord.js');
 
     let rembed = new Discord.MessageEmbed()
