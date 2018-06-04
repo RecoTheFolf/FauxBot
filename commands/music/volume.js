@@ -5,8 +5,8 @@ class Volume extends Command {
   constructor(bot) {
       super(bot,{ 
           name:'volume',
-          description: "Music Queue",
-          usage: "queue [page]",
+          description: "Shows the current volume/lets you change it",
+          usage: "volume <volume>",
           guildOnly:true
       })
   }
