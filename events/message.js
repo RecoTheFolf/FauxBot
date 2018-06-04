@@ -20,7 +20,6 @@ const msg = message
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
     let commandfile = this.bot.commands.get(cmd.slice(settings.prefix.length));
-
     
     if(!commandfile) return;
     if (commandfile.conf.guildOnly && message.channel.type === 'dm') return message.channel.send("This command cannot be used in DM's")

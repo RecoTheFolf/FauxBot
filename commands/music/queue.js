@@ -6,7 +6,7 @@ class Queue extends Command {
       super(bot,{ 
           name:'queue',
           description: "Music Queue",
-          usage: "queue",
+          usage: "",
           guildOnly:true
       })
   }

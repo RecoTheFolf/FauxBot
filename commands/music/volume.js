@@ -6,7 +6,7 @@ class Volume extends Command {
       super(bot,{ 
           name:'volume',
           description: "Music Queue",
-          usage: "queue",
+          usage: "queue [page]",
           guildOnly:true
       })
   }

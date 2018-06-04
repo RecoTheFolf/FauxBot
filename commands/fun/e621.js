@@ -9,7 +9,7 @@ class e621 extends Command {
           name:'e621',
           description: "e621 (Currently broke, please do not test | Will post safe images though in channels)",
           guildOnly:true,
-          usage: "currently broke"
+          usage: ""
       })
   }
   async run (msg, args) {

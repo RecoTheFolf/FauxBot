@@ -23,16 +23,20 @@ const settings = {
          set: async (value,guild) => value, //This function sets the value
          view: (settings) => settings.prefix //For viewing the setting
          },
-         djRole: {
+         djrole: {
              value:null,
              description:"Set the role that allows users to use music commands.",
              set: async (value,guild) => {
+                 try {
                 if (guild.roles.get(value)) return value;
-                if (guild.roles.find('name',value)) return guild.roles.find('name',value).id;
+                if (guild.roles.find(role => role.name.toLowerCase() === value.toLowerCase())) return guild.roles.find(role => role.name.toLowerCase() === value.toLowerCase()).id;
+                 } catch(e) {
+                     return null
+                 }
              },
              view: (settings,guild) => {
-                 if (guild.roles.get(settings.djRole)) return guild.roles.get(settings.djRole).name
-                 return;
+                 if (guild.roles.get(settings.djrole)) return guild.roles.get(settings.djrole).name;
+                 return
              } 
          }
     },

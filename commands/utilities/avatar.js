@@ -9,7 +9,7 @@ class Avatar extends Command {
           name:'avatar',
           description: "Get you, or another users icon/avatar",
           guildOnly:true,
-          usage: "avatar <@​user/user-id>",
+          usage: "<@​user/user-id>",
       })
   }
     async run(message,args) {

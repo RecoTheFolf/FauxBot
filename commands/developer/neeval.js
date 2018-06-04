@@ -12,7 +12,8 @@ class Eval extends Command {
     super(client, {
       name: "neeval",
       description: "Evaluates arbitrary Javascript.",
-      level:"Bot Developer"
+      level:"Bot Developer",
+      usage:"<code>"
     });
     
   }

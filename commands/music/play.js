@@ -11,7 +11,7 @@ class Play extends Command {
           description: "Play media from youtube",
           guildOnly: true,
           level:"Server DJ",
-          usage: "play [ytlink]",
+          usage: "<ytlink>",
           perms:['CONNECT','SPEAK']
       })
   }

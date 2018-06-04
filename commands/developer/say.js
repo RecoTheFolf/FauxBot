@@ -10,8 +10,8 @@ class Say extends Command {
           name:'say',
           description: "Make the bot say anything you want",
           guildOnly:true,
-          usage: "say Test",
-          level:"Bot Developer"
+          usage: "<message>",
+          level:"Bot Developer",
       })
   }
 

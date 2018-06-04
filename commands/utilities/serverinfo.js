@@ -7,7 +7,7 @@ class Serverinfo extends Command {
             name:'serverinfo',
             description: "Get information on the server",
             guildOnly:true,
-            usage: "serverinfo",
+            usage: "",
             perms:['EMBED_LINKS']
         })
     }

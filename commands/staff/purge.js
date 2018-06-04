@@ -8,7 +8,7 @@ class Purge extends Command {
           name:'purge',
           description: "Purge a certain amount of messages",
           guildOnly:true,
-          usage: "purge <amount>",
+          usage: "<amount>",
           level:"Server Moderator",
           perms:['MANAGE_MESSAGES']
       })

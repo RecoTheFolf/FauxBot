@@ -9,7 +9,7 @@ class Cat extends Command {
           name:'cat',
           description: "Get a cute cat image :3",
           guildOnly:true,
-          usage: "cat"
+          usage: ""
       })
   }
 

@@ -4,7 +4,7 @@ class Command {
       description = "No description provided.",
       guildOnly = false,
       category = "undefined",
-      usage = "undefined",
+      usage = "",
       level = "Server Member",
       perms = []
     }) {

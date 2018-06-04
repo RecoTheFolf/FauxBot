@@ -12,7 +12,7 @@ class Userinfo extends Command {
             name:'userinfo',
             description: "Get information on a user",
             guildOnly:true,
-            usage: "userinfo <@​user/user-id>",
+            usage: "<@​user/user-id>",
             perms:['EMBED_LINKS']            
         })
     }

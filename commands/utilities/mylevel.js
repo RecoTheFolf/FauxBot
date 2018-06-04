@@ -5,7 +5,7 @@ class Mylevel extends Command {
       super(bot,{ 
           name:'mylevel',
           description: "Shows what permission level you have on the bot.",
-          usage: "mylevel"
+          usage: ""
       })
   }
 

@@ -6,7 +6,7 @@ class Help extends Command {
       super(bot,{ 
           name:'help',
           description: "Return useful information on commands or settings",
-          usage: "help [command]",
+          usage: "[command/category/setting]",
           perms:['EMBED_LINKS']
       })
   }
@@ -45,7 +45,7 @@ if (cmd) {
     .setTitle("FauxBot Help")
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
     .setColor(`RANDOM`)
-    .addField("Commands", `${cmd.help.name} | ${cmd.help.description} \n\n**Usage**: \n${cmd.help.usage}`)
+    .addField("Commands", `${cmd.help.name} | ${cmd.help.description} \n\n**Usage** (\`<>\` m: \n${cmd.help.usage ? `${cmd.help.name} ${cmd.help.usage}` : "None"}`)
     .setTimestamp()
     .setFooter("FauxBot Help Command");
 

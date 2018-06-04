@@ -47,7 +47,6 @@ this.bot.streamData.get(g.id).set('voiceChannel',null);
 this.bot.streamData.get(g.id).set('queue',[]);
 this.bot.streamData.get(g.id).set('volume',1)
 g.streamData = this.bot.streamData.get(g.id)
-
         const settings = await this.bot.settings.get(g.id).getField('settings').run().catch(async e => {
             //if no settings
             g.new = true

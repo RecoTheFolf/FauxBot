@@ -9,7 +9,7 @@ class Invite extends Command {
           name:'invite',
           description: "Creates a bot invite so you can invite it to your server",
           level:"Server Member",
-          usage: "invite"
+          usage: ""
       })
   }
 

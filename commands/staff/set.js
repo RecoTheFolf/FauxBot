@@ -6,7 +6,7 @@ class Set extends Command {
           name:'set',
           description: "Set various guild settings",
           guildOnly:true,
-          usage: "set prefix -",
+          usage: "<setting> <value>",
           level:"Server Admin"
       })
   }
