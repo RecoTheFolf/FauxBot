@@ -17,12 +17,6 @@ class Reload extends Command {
 
 
 async run (message, args) {
-  let embed = new Discord.MessageEmbed()
-  .setTitle("Reload")
-  .setDescription("Sorry, the `reload` command can only be executed by the Bot Developers.")
-  .setColor("#cdf785");
-  if(!this.bot.config.developers.includes(message.author.id)) return message.channel.send(embed);
-
   try{
     //delete require.cache[require.resolve(`./${args[0]}.js`)];
     const cmd = this.bot.commands.get(args[0])
