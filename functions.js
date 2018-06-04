@@ -26,12 +26,12 @@ module.exports = (bot) => {
       }
     };
 
-    bot.resetStream = async (guild) => { //Minimize code, make function
+    bot.resetStream = async (guild,reason) => { //Minimize code, make function
 
-      if (bot.streamData.get(guild.id).get('leaveReason')) {
-        await bot.streamData.get(guild.id).get('displayChannel').send(bot.streamData.get(guild.id).get('leaveReason'))
+      if (reason) {
+        await bot.streamData.get(guild.id).get('displayChannel').send(reason)
       } else {
-        await bot.streamData.get(guild.id).get('displayChannel').send("Queue has concluded")
+        await bot.streamData.get(guild.id).get('displayChannel').send("No end reason provided")
       }
       //Clear
       bot.streamData.get(guild.id).set('voiceChannel','null')
@@ -46,9 +46,11 @@ module.exports = (bot) => {
       const vChannel = guild.streamData.get('voiceChannel')
       const dChannel = guild.streamData.get('displayChannel')
 
-      if (queue.length === 0) { //End of queue
-       return bot.resetStream(guild)
-      }
+      if (queue.length === 0) return bot.resetStream(guild,"The queue has concluded")
+      
+
+      if (vChannel.members.size === 1) return bot.resetStream(guild,"There are no members in this voice channel.  Queue has been cleared")
+
       try {
         console.log(queue[0])
         await vChannel.join().then(c => c.play(ytdl(queue[0].id, { audioonly: true }), { passes: 3 }));
@@ -59,12 +61,10 @@ module.exports = (bot) => {
           bot.play(guild) //basically looping the function
           })
           guild.voiceConnection.dispatcher.on('error', (err) => {
-            guild.streamData.set('leaveReason',`An error ocurred ${err}\n${err.stack}`)
           })
       } catch(e) {
-        await bot.streamData.get(guild.id).set('leaveReason',`An error ocurred\n${e}\n${e.stack}`)
        
-        bot.resetStream(guild)
+        bot.resetStream(guild,`An error ocurred\n${e}\n${e.stack}`)
       }
     }
 
