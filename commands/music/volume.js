@@ -16,7 +16,7 @@ if (!message.guild.voiceConnection || !message.guild.voiceConnection.dispatcher)
 if (!message.member.voiceChannel) return [0,"You need to be in a voice channel to use this"];
 let vol = args[0]
 let isItADigit = /^\d+$/.test(vol);
-if (args.length === 0) return [1,`The volume of the player is currently set to ${message.guild.streamData.get('volume')}`]
+if (args.length === 0) return [1,`The volume of the player is currently set to ${message.guild.streamData.get('volume') * 100}`]
 if (!isItADigit || args.length === 0 || !parseInt(vol) || parseInt(vol) < 2 || parseInt(vol) > 200) return [0,'You need to specify a value between 1 and 200'];
 message.guild.streamData.set('volume',vol / 100)
 await message.guild.voiceConnection.dispatcher.setVolume(vol / 100)
