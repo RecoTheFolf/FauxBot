@@ -18,8 +18,9 @@ class Set extends Command {
     if (value.length === 0) return [0,"Specify a value to set"]
     if (!this.bot.config.defaultSettings[set]) return [0,"Invalid setting"]
     const status = await this.bot.config.defaultSettings[set.toLowerCase()].set(val,message.guild)
-    if (!status) return [0,`Invalid option for setting.  Do \`${this.bot.sets.prefix}help ${set.toLowerCase()}\` for more help`]
-    message.guild.settings[set.toLowerCase()] = status
+    if (!status && status != 0) return [0,`Invalid option for setting.  Do \`${this.bot.sets.prefix}help ${set.toLowerCase()}\` for more help`]
+    
+    message.guild.settings[set.toLowerCase()] = status === 0 ? null : status
     await this.bot.settings.get(message.guild.id).update({settings:message.guild.settings}).run()
     return[1,`Successfully set the ${set.toLowerCase()} setting`]
 }

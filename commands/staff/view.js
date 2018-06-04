@@ -16,7 +16,7 @@ class View extends Command {
     if (!set) return [0,"You need to specify a setting"]
     if (!this.bot.config.defaultSettings[set]) return [0,"Invalid setting"]
     const status = await this.bot.config.defaultSettings[set.toLowerCase()].view(message.guild.settings,message.guild)
-    if (!status) return [0,`No data was returned.  This is a bot problem.`]
+    if (!status) return [0,`${set.toLowerCase()} is currently not set you can set it by doing ${message.guild.settings.prefix}set ${set.toLowerCase()}`]
     message.channel.send(`The current value of ${set} is \`${status}\``)
 }
 

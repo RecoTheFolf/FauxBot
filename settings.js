@@ -28,6 +28,7 @@ const settings = {
              description:"Set the role that allows users to use music commands.",
              set: async (value,guild) => {
                  try {
+                     if (value === "off" || value === "disable") return 0
                 if (guild.roles.get(value)) return value;
                 if (guild.roles.find(role => role.name.toLowerCase() === value.toLowerCase())) return guild.roles.find(role => role.name.toLowerCase() === value.toLowerCase()).id;
                  } catch(e) {
