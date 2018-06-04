@@ -37,7 +37,6 @@ module.exports = (bot) => {
       bot.streamData.get(guild.id).set('voiceChannel','null')
       bot.streamData.get(guild.id).set('displayChannel','null')
       bot.streamData.get(guild.id).set('queue',[])
-      bot.streamData.get(guild.id).delete('leaveReason')
       guild.voiceConnection ? guild.voiceConnection.channel.leave() : null
     }
 
