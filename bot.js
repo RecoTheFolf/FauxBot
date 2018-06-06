@@ -8,12 +8,39 @@ try {
     process.exit()
   }
 
+  
+
 //load constants
 const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.js");
 const Discord = require("discord.js");
 const r = require('rethinkdbdash')({db:`FauxBot`})();
+
+
+function kill() {
+    process.exit()
+}
+async function check() {
+    const OS = await require('os').type()
+    if (OS === 'Windows_NT') {
+        console.log("Windows OS detected")
+        const files = await readdir('./')
+        console.log(files)
+        console.log(!files.includes('rethinkdb.exe'))
+        if (!files.includes('rethinkdb.exe')) { //...Can't get it to kill the process
+        
+    console.log('rethinkdb.exe was not found.  Please place rethinkdb in the root folder of the bot and try loading again')
+    process.exit()
+        }
+            await require('child_process').exec('rethinkdb.exe')
+    }
+}
+const checkStatus = check()
+
+console.log(checkStatus)
+
+
 
 class Faux extends Discord.Client {
     constructor(options) {
