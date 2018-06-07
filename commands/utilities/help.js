@@ -45,7 +45,7 @@ if (cmd) {
     .setTitle("FauxBot Help")
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
     .setColor(`RANDOM`)
-    .addField("Commands", `${cmd.help.name} | ${cmd.help.description} \n\n**Usage** (\`<>\` m: \n${cmd.help.usage ? `${cmd.help.name} ${cmd.help.usage}` : "None"}`)
+    .addField("Commands", `${cmd.help.name} | ${cmd.help.description} \n\n**Usage** (\`<>\` = Require \`[]\` = optional)\n${cmd.help.usage ? `${cmd.help.name} ${cmd.help.usage}` : "None"}`)
     .setTimestamp()
     .setFooter("FauxBot Help Command");
 
