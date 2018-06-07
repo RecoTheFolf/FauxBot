@@ -11,7 +11,7 @@ class Skip extends Command {
           description: "skips what is currently playing",
           guildOnly: true,
           level:"Server DJ",
-          usage: "skip",
+          usage: "",
           perms:['CONNECT','SPEAK']
       })
   }
