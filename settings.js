@@ -79,13 +79,13 @@ check: (msg) => msg.guild ? msg.member.permissions.has(['MANAGE_SERVER']) : fals
 {
     name:"Bot Developer",
     level:6,
-    inherits:[3],
+    inherits:[3,2,1],
     check:(msg) => msg.bot.config.developers.includes(msg.author.id)
 },
     {
         name:'Bot Owner',
         level:8,
-        inherits:[6,3],
+        inherits:[6,3,2,1],
         check: (msg) => msg.bot.config.ownerID.includes(msg.author.id)
     }
     //etc
