@@ -18,11 +18,13 @@ async run(message, args, level) {
     let yttoken = this.bot.tokens.ytKey;
     let devtoken = this.bot.tokens.devToken;
     let settings = this.bot.config;
+    let dblKey = this.bot.tokens.dblKey;
     exec(`${args.join(' ')}`, (error, stdout, stderr) => {
       stdout = stdout.replace(token, "No, bad!")
       stdout = stdout.replace(yttoken, "No, bad!")
       stdout = stdout.replace(devtoken, "No, bad!")
       stdout = stdout.replace(settings, "No, bad!")
+      stdout = stdout.replace(dblKey, "No, bad!")
       const response = (error || stdout);
       message.channel.send(`Ran: ${args.join(" ")}\n${response}`, {code: "asciidoc", split: "\n"}).catch(console.error);
     });
