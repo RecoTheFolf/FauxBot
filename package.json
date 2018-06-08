@@ -6,6 +6,7 @@
 	"dependencies": {
 		"chalk": "^2.4.1",
 		"circular-json": "^0.5.3",
+		"dblapi.js": "^2.0.1",
 		"discord.js": "github:hydrabolt/discord.js#master",
 		"eris": "^0.8.5",
 		"got": "^8.3.1",

@@ -5,6 +5,9 @@ module.exports = class {
 
 async run() {
     const Discord = require('discord.js');
+    const DBL = require("dblapi.js");
+    const dbl = new DBL('bottoken.dblKey, Faux');
+
 
     let rembed = new Discord.MessageEmbed()
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
@@ -31,6 +34,7 @@ async run() {
     .setTimestamp()
     .setFooter("FauxBot Loaded");
     this.bot.channels.get('450174829832830976').send(frembed);
+    dbl.postStats(this.bot.guilds.size);
 
     this.bot.sets = {}
     for (var s in this.bot.config.defaultSettings) {
