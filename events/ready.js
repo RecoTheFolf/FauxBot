@@ -6,8 +6,9 @@ module.exports = class {
 async run() {
     const Discord = require('discord.js');
     const DBL = require("dblapi.js");
+    const client = new Discord.Client();
     const tokens = require("../token.js");
-    const dbl = new DBL('tokens.dblKey, Faux');
+    const dbl = new DBL(tokens.dblKey, client)
 
 
     let rembed = new Discord.MessageEmbed()

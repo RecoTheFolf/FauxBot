@@ -15,8 +15,6 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.js");
 const Discord = require("discord.js");
-const DBL = require("dblapi.js");
-const dbl = new DBL('bottoken.dblKey, Faux')
 const r = require('rethinkdbdash')({db:`FauxBot`})();
 
 
