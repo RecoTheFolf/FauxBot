@@ -6,7 +6,7 @@ module.exports = class {
 async run() {
     const Discord = require('discord.js');
     const DBL = require("dblapi.js");
-    const tokens = require("../../token.js");
+    const tokens = require("../token.js");
     const dbl = new DBL('tokens.dblKey, Faux');
 
 
