@@ -22,7 +22,7 @@ let gcembed = new Discord.MessageEmbed()
     .setTimestamp()
     .setFooter("Joined Guild!");
     this.bot.channels.get('450174829832830976').send(gcembed);
-    this.bot.user.setActivity("Use --help for a list of commands" + `\n\n| in ${this.bot.guilds.size} server(s)!`);
+    this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)!`);
 }
 
 }
