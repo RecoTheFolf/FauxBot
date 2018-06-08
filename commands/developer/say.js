@@ -16,8 +16,6 @@ class Say extends Command {
   }
 
 async run(message, args) {
-
-    if(!config.developers.includes(message.author.id)) return errors.noPerms(message, "BOT_DEVELOPER");
       const sayMessage = args.join(" ");
       message.delete().catch();
       message.channel.send(sayMessage);
