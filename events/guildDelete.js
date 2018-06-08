@@ -19,7 +19,7 @@ let glembed = new Discord.MessageEmbed()
     .setTimestamp()
     .setFooter("Left Guild..");
     this.bot.channels.get('450174829832830976').send(glembed);
-    this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)!`);
+    this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)` + `\n\nwith ${this.bot.users.size} users!`);
 
 }
 
