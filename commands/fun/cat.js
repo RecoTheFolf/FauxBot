@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const config = require("../../settings.js");
 const Command = require('../../base/Cmds.js')
+const request = require('request');
 const { get } = require("snekfetch");
 
 class Cat extends Command {
@@ -14,25 +15,23 @@ class Cat extends Command {
   }
 
   async run(message, args) { // eslint-disable-line no-unused-vars
+    const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
 
-    const snekfetch = require('snekfetch')
-    try {
-    await snekfetch.post('https://aws.random.cat/meow').then(request => {
-  
-  if (!message.guild || message.channel.permissionsFor(message.guild.me).has(['ATTACH_FILES'])) {
-  
-  message.channel.send('',{"files":[JSON.parse(request.text).file]}).catch(err => {message.channel.send("<:RedX:451263237434900491> | An error occurred making that request.  Don't worry, you always have me! :cat:")})
-  } else {
-  message.channel.send(JSON.parse(request.text).file)
-  
-  }
-  
+    request.get('http://thecatapi.com/api/images/get?format=src&type=png', {
+      
+    }, function(error, response, body) {
+        if(!error && response.statusCode == 200) {
+          const embed = new Discord.MessageEmbed()
+          .setTitle("Random Cat :3")
+          .setAuthor(member.user.tag, member.user.displayAvatarURL())
+          .setColor(`RANDOM`)
+          .setImage(response.request.uri.href)
+          return message.channel.send({embed});
+        } else {
+          message.channel.send(`<:RedX:451263237434900491> An error occurred.  This is a problem with the API or post method.  This is not bot-related.`) + console.log(err);
+        }
     })
-  } catch(err) {
-    message.channel.send(`<:RedX:451263237434900491> An error occurred.  This is a problem with the API or post method.  This is not bot-related.`) + console.log(err)
   }
-}
-
 }
 
 module.exports = Cat;
