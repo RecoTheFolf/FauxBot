@@ -25,7 +25,7 @@ let gcembed = new Discord.MessageEmbed()
     .setTimestamp()
     .setFooter("Joined Guild!");
     this.bot.channels.get('450174829832830976').send(gcembed);
-    this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)` + `\n\nwith ${this.bot.users.size} users!`);
+    this.bot.user.setActivity("--help" + `\nin ${this.bot.guilds.size} server(s)` + `\nwith ${this.bot.users.size} users!`);
     dbl.postStats(this.bot.guilds.size);
 }
 

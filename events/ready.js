@@ -22,7 +22,7 @@ async run() {
     this.bot.channels.get('450174829832830976').send(rembed);
 
     console.info(`${this.bot.user.username} is online with ${this.bot.users.size} users, in ${this.bot.channels.size} channels of ${this.bot.guilds.size} guilds.`);
-    this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)` + `\n\nwith ${this.bot.users.size} users!`);
+    this.bot.user.setActivity("--help" + `\nin ${this.bot.guilds.size} server(s)` + `\nwith ${this.bot.users.size} users!`);
     
     let frembed = new Discord.MessageEmbed()
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
