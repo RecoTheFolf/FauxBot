@@ -5,6 +5,9 @@ module.exports = class {
 
 async run(guild) {
   const Discord = require('discord.js');
+  const DBL = require("dblapi.js");
+  const tokens = require("../token.js");
+  const dbl = new DBL(tokens.dblKey, client)
 
 await this.bot.settings.insert({id:guild.id,settings:this.bot.sets}).run(); //Add default settings to server DB
 guild.settings = await this.bot.settings.get(guild.id).getField('settings').run();
@@ -23,6 +26,7 @@ let gcembed = new Discord.MessageEmbed()
     .setFooter("Joined Guild!");
     this.bot.channels.get('450174829832830976').send(gcembed);
     this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)` + `\n\nwith ${this.bot.users.size} users!`);
+    dbl.postStats(this.bot.guilds.size);
 }
 
 }

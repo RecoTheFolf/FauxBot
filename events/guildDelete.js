@@ -5,6 +5,9 @@ module.exports = class {
 
 async run(guild) {
   const Discord = require('discord.js');
+  const DBL = require("dblapi.js");
+  const tokens = require("../token.js");
+  const dbl = new DBL(tokens.dblKey, client)
 
 await this.bot.settings.get(guild.id).delete().run().catch(console.log); //Delete server from database
 console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);
@@ -20,6 +23,7 @@ let glembed = new Discord.MessageEmbed()
     .setFooter("Left Guild..");
     this.bot.channels.get('450174829832830976').send(glembed);
     this.bot.user.setActivity("--help" + `\n\n| in ${this.bot.guilds.size} server(s)` + `\n\nwith ${this.bot.users.size} users!`);
+    dbl.postStats(this.bot.guilds.size);
 
 }
 
