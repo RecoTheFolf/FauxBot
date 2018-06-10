@@ -35,7 +35,6 @@ for (var b in results) {
     i++
     }
 }
-console.log(resultStore)
 if (resultStore.size === 0) return [0,'No results'];
 this.bot.test = resultStore
 //resultStore = await resultStore.filter(r => r.duration.minutes < 16 && r.duration.hours === 0)
