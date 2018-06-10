@@ -9,6 +9,7 @@
 		"dblapi.js": "^2.0.1",
 		"discord.js": "github:hydrabolt/discord.js#master",
 		"eris": "^0.8.5",
+		"g": "^2.0.1",
 		"got": "^8.3.1",
 		"moment": "^2.22.1",
 		"moment-duration-format": "^2.2.2",
