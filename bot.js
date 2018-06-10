@@ -93,7 +93,7 @@ String.prototype.replaceAll = function(search, replacement) {
         const event = new (require(`./events/${f}`))(bot);
         bot.on(eventName, (...args) => event.run(...args))
     })
-    bot.login(bottoken.discordToken)
+    bot.login(bottoken.devToken)
 }
 
 
