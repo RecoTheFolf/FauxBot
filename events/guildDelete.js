@@ -7,7 +7,7 @@ async run(guild) {
   const Discord = require('discord.js');
   const DBL = require("dblapi.js");
   const tokens = require("../token.js");
-  const dbl = new DBL(tokens.dblKey, bot)
+  const dbl = new DBL(tokens.dblKey, this.bot)
 
 await this.bot.settings.get(guild.id).delete().run().catch(console.log); //Delete server from database
 console.log(`I have been removed from: ${guild.name} (id: ${guild.id})`);

@@ -8,7 +8,7 @@ async run() {
     const DBL = require("dblapi.js");
     const client = new Discord.Client();
     const tokens = require("../token.js");
-    const dbl = new DBL(tokens.dblKey, client)
+    const dbl = new DBL(tokens.dblKey, this.bot)
 
 
     let rembed = new Discord.MessageEmbed()
