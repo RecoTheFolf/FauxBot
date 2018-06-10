@@ -17,13 +17,15 @@ const settings = {
     defaultSettings: {
      
          prefix: {
-             name:'prefix',
+        name:'prefix',
          value:'--',
          description:'Set the prefix for the bot',
          set: async (value,guild) => value, //This function sets the value
          view: (settings) => settings.prefix //For viewing the setting
          },
+//Role-based settings
          djrole: {
+             name:'djrole',
              value:null,
              description:"Set the role that allows users to use music commands.",
              set: async (value,guild) => {
@@ -39,7 +41,23 @@ const settings = {
                  if (guild.roles.get(settings.djrole)) return guild.roles.get(settings.djrole).name;
                  return
              } 
-         }
+         },
+         //Logs-based settings
+         modlogs:{
+            name:'modlogs',
+            value:null,
+            description:'Set the channel for where moderation logs should be stored',
+            set: async (value, guild) => {
+                try {
+                if (value === "off" || value === "disable") return 0
+                if (guild.channels.get(value)) return value
+                if (guild.channels.find(c => c.name.toLowerCase() === value.toLowerCase())) return guild.channels.find(c => c.name.toLowerCase() === value.toLowerCase()).id;
+                } catch(e) {
+                    return null
+                }
+            },
+            view: (settings,guild) => guild.channels.get(guild.settings.modlogs) ? guild.channels.get(guild.settings.modlogs).name : null
+        }
     },
 perms:[
     {
