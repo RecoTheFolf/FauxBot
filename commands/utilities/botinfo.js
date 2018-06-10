@@ -25,7 +25,7 @@ async run(message, args) {
     .addField("Website:", "Coming Soon!")
     .addField("Developed by:", "Reconal#0001 and Pawky#3299")
     .addField("Library", `Discord.js (${Discord.version})`, true)
-    //.addField("Links", "<:Discord:450171955384025088> [Support Server]() | [Bot Invite]()")
+    .addField("» Links", " \n[Support Server](https://discord.gg/Yyas54t) \n[Add Faux](https://discordapp.com/oauth2/authorize?client_id=447972712795865088&permissions=1610083543&scope=bot) \n[Commands](https://github.com/RecoTheFolf/FauxBot-Documentation/wiki)")
     .addField("I've been up for" , `${duration}` + ".")
     .setTimestamp()
     .setFooter("FauxBot Information");
