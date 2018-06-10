@@ -6,7 +6,7 @@ const { get } = require("snekfetch");
 class Fantasy extends Command {
   constructor(bot) {
       super(bot,{ 
-          name:'nature',
+          name:'fantasy',
           description: "Get an random image of fantasy",
           guildOnly:true,
           usage: "",
