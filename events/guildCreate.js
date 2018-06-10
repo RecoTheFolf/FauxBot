@@ -7,7 +7,7 @@ async run(guild) {
   const Discord = require('discord.js');
   const DBL = require("dblapi.js");
   const tokens = require("../token.js");
-  const dbl = new DBL(tokens.dblKey, client)
+  const dbl = new DBL(tokens.dblKey, bot)
 
 await this.bot.settings.insert({id:guild.id,settings:this.bot.sets}).run(); //Add default settings to server DB
 guild.settings = await this.bot.settings.get(guild.id).getField('settings').run();
