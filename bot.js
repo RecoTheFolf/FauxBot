@@ -15,7 +15,8 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.js");
 const Discord = require("discord.js");
-const r = require('rethinkdbdash')({db:`FauxBot`})();
+const r = require('rethinkdbdash')({db:`FauxBot`})()
+const rethonk = require('rethinkdbdash')()
 
 
 
@@ -48,6 +49,26 @@ String.prototype.replaceAll = function(search, replacement) {
 
 
   const initialize = async () => {
+    //Check DB stuff
+    console.log("Database check")
+    try {
+    await require('rethinkdbdash')().connect().catch()
+    } catch(e) {
+        console.error('ERROR: Could not initialize a connection to rethinkdb')
+        process.exit()
+    }
+   
+    const dbs = await rethonk.dbList()
+   if (!dbs.includes('FauxBot')) {
+    console.warn('No FauxBot db detected, creating...')
+    await rethonk.dbCreate('Test').run()
+   }
+
+    await rethonk.db('FauxBot').table('settings').run().catch(async e => {
+        console.warn("No settings table found in db \"FauxBot\"")
+        await rethonk.db('FauxBot').tableCreate('settings').run()
+    })
+
     //Run all initialization actions
     //-------------------------------
     //Load Categories
