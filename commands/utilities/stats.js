@@ -34,7 +34,7 @@ async run(message, args) {
     .addField("» NodeJS Version", `${process.version}`, true)
     .addField("» CPU Cores", `${os.cpus().length}`, true)
     .addField("» Ram Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true)
-    .addField("» Total Commands", "26", true)
+    .addField("» Total Commands", "33", true)
     .addField("» Links", " \n[Support Server](https://discord.gg/Yyas54t) \n[Add Faux](https://discordapp.com/oauth2/authorize?client_id=447972712795865088&permissions=1610083543&scope=bot) \n[Commands](https://github.com/RecoTheFolf/FauxBot-Documentation/wiki)")
     .addField("» Bot Start Time", `${moment.utc(this.bot.readyAt).format("dddd, MMMM Do YYYY, HH:mm:ss")}`)
     .addField("» Shard", `${this.bot.shard ? this.bot.shard.count : 1}`)

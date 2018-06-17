@@ -49,7 +49,7 @@ await keyPerms.forEach(p => {if (member.permissions.has(p)) {perms.push(p)}})
     .setFooter("FauxBot User Information")
     .setTimestamp();
 
-if (perms.length > 0) userembed.addField('User Permissions',perms.join(', ').toLocaleUpperCase().replaceAll('_',' '),true);
+if (perms.length > 0) userembed.addField('User Permissions',perms.join(', ').replaceAll('_',' ').titleCase(),true);
 
     return message.channel.send(userembed);
 }

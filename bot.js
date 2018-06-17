@@ -47,6 +47,12 @@ String.prototype.replaceAll = function(search, replacement) {
     return target.replace(new RegExp(search, 'g'), replacement);
   };
 
+  String.prototype.titleCase = function()  {
+    var str = this
+    str = str.toLowerCase()
+    return str.split(' ').map(s => s.charAt(0).toUpperCase()+s.substring(1).toLowerCase()).join(' ');
+};
+
 
   const initialize = async () => {
     //Check DB stuff
