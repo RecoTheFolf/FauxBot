@@ -6,7 +6,7 @@ const { get } = require("snekfetch");
 class Kiss extends Command {
   constructor(bot) {
       super(bot,{ 
-          name:'Kiss',
+          name:'kiss',
           description: "Kiss a random person~",
           guildOnly:true,
           usage: "",
