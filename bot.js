@@ -61,7 +61,7 @@ String.prototype.replaceAll = function(search, replacement) {
     const dbs = await rethonk.dbList()
    if (!dbs.includes('FauxBot')) {
     console.warn('No FauxBot db detected, creating...')
-    await rethonk.dbCreate('Test').run()
+    await rethonk.dbCreate('FauxBot').run()
    }
 
     await rethonk.db('FauxBot').table('settings').run().catch(async e => {
@@ -100,7 +100,7 @@ String.prototype.replaceAll = function(search, replacement) {
             console.error(`Could not load the ${eventName} event ${e.message}\n${e.stack}`)
         }
     })
-    bot.login(bottoken.devToken)
+    bot.login(bottoken.discordToken)
 }
 
 
