@@ -52,7 +52,7 @@ const member = message.mentions.members.first() || message.guild.members.get(arg
   .addField('**Verification Level**', guild.verificationLevel, true)
   .addField('**Text Channels**', textChannels, true)
   .addField('**Voice Channels**', voiceChannels, true)
-  .addField('**Roles**', `${guild.roles.size}`, true)
+  .addField("**Roles**", `${guild.roles.size == 1 ? "None" : guild.roles.filter(r => r.name != `@everyone`).map(r => `${r}`).join(' ')}`, false)
   .addField('**Emojis**', `${guild.emojis.size}`, true)
   .setFooter("FauxBot Server Information")
   .setTimestamp();
