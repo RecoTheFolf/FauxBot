@@ -15,30 +15,9 @@ const { promisify } = require("util");
 const readdir = promisify(require("fs").readdir)
 const bottoken = require("./token.js");
 const Discord = require("discord.js");
-const r = require('rethinkdbdash')({db:`FauxBot`})();
+const r = require('rethinkdbdash')({db:`FauxBot`})()
+const rethonk = require('rethinkdbdash')()
 
-
-function kill() {
-    process.exit()
-}
-async function check() {
-    const OS = await require('os').type()
-    if (OS === 'Windows_NT') {
-        console.log("Windows OS detected")
-        const files = await readdir('./')
-        console.log(files)
-        console.log(!files.includes('rethinkdb.exe'))
-        if (!files.includes('rethinkdb.exe')) { //...Can't get it to kill the process
-        
-    console.log('rethinkdb.exe was not found.  Please place rethinkdb in the root folder of the bot and try loading again')
-    process.exit()
-        }
-            await require('child_process').exec('rethinkdb.exe')
-    }
-}
-const checkStatus = check()
-
-console.log(checkStatus)
 
 
 
@@ -70,6 +49,26 @@ String.prototype.replaceAll = function(search, replacement) {
 
 
   const initialize = async () => {
+    //Check DB stuff
+    console.log("Database check")
+    try {
+    await require('rethinkdbdash')().connect().catch()
+    } catch(e) {
+        console.error('ERROR: Could not initialize a connection to rethinkdb')
+        process.exit()
+    }
+   
+    const dbs = await rethonk.dbList()
+   if (!dbs.includes('FauxBot')) {
+    console.warn('No FauxBot db detected, creating...')
+    await rethonk.dbCreate('Test').run()
+   }
+
+    await rethonk.db('FauxBot').table('settings').run().catch(async e => {
+        console.warn("No settings table found in db \"FauxBot\"")
+        await rethonk.db('FauxBot').tableCreate('settings').run()
+    })
+
     //Run all initialization actions
     //-------------------------------
     //Load Categories
@@ -78,22 +77,30 @@ String.prototype.replaceAll = function(search, replacement) {
         const thisCommands = await readdir(`./commands/${c}/`)
         console.log(`Now loading ${thisCommands.length} commands in the ${c} category`)
         thisCommands.forEach(async co => {
+            try {
             const cmd = new (require(`./commands/${c}/${co}`))(bot)
             cmd.conf.category = c
             if (!bot.categories.includes(c)) bot.categories.push(c);
-            bot.commands.set(co.split('.')[0],cmd)
+            bot.commands.set(co.split('.')[0],cmd) 
+            } catch(e) {
+                console.error(`Could not load the ${co} command ${e.message}\n${e.stack}`)
+            }
         })
     })
 
     const eventFiles = await readdir('./events')
     console.log("Loading Events...")
     eventFiles.forEach(f => {
+        try {
         const eventName = f.split('.')[0]
         console.log(`Loaded the ${eventName} event`)
         const event = new (require(`./events/${f}`))(bot);
-        bot.on(eventName, (...args) => event.run(...args))
+        bot.on(eventName, (...args) => event.run(...args)) 
+        } catch(e) {
+            console.error(`Could not load the ${eventName} event ${e.message}\n${e.stack}`)
+        }
     })
-    bot.login(bottoken.discordToken)
+    bot.login(bottoken.devToken)
 }
 
 
