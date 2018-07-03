@@ -8,7 +8,7 @@ class Urban extends Command {
   constructor(bot) {
       super(bot,{ 
           name:'urban',
-          description: "Search up words via Urban Dictionary",
+          description: "Search up words via Urban Dictionary | Channel needs to be marked as NSFW!",
           guildOnly:true,
           usage: "<word>",
           perms:['EMBED_LINKS']

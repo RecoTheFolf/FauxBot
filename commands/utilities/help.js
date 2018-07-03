@@ -18,7 +18,7 @@ if (args.length === 0) {
     .setTitle("FauxBot Help")
     .setAuthor(this.bot.user.tag, this.bot.user.displayAvatarURL())
     .setColor(`RANDOM`)
-    .addField("Command Categories", "Use ``--help (category)`` to find whatever commands you need!")
+    .addField("Command Categories", `Use ${message.guild.settings.prefix}help [category] to find whatever commands you need!`)
     .addField("Please specify help on a category", `\n\n${this.bot.categories.join('\n')}`)
     .setTimestamp()
     .setFooter("FauxBot Help Command");

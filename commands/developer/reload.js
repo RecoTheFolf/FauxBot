@@ -33,7 +33,7 @@ const cat = cmd.conf.category
 
     return message.channel.send(Aembed);
      }catch(e){
-     return message.channel.send("Error: "+e)
+     return message.channel.send("Error: " + e)
      }
 }
 }

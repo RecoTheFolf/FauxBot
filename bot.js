@@ -106,7 +106,7 @@ String.prototype.replaceAll = function(search, replacement) {
             console.error(`Could not load the ${eventName} event ${e.message}\n${e.stack}`)
         }
     })
-    bot.login(bottoken.discordToken)
+    bot.login(bottoken.devToken)
 }
 
 
